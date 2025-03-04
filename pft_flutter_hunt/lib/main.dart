@@ -155,7 +155,7 @@ class ThirdFloor extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Third Floor PFT Third Floor')),
+      appBar: AppBar(title: const Text('Third Floor PFT')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
