@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ThirdFloor()));
+                          builder: (context) => const FirstFloor()));
                 },
                 child: Text('First Floor')),
             ElevatedButton(
@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ThirdFloor()));
+                          builder: (context) => const SecondFloor()));
                 },
                 child: Text('Second Floor')),
             ElevatedButton(
@@ -164,6 +164,44 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class FirstFloor extends StatelessWidget {
+  const FirstFloor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('First Floor PFT')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondFloor extends StatelessWidget {
+  const SecondFloor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Second Floor PFT')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
     );
   }
 }
