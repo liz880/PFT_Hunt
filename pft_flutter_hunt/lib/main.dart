@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -113,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
+          
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -122,7 +124,12 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-                     ElevatedButton(onPressed: () {
+                  ElevatedButton(onPressed: () { 
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ThirdFloor())); },
+                  child: Text('Third Floor')),
+              ElevatedButton(onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const CassMPage()),
@@ -138,6 +145,25 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+class ThirdFloor extends StatelessWidget{
+
+ const ThirdFloor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Third Floor PFT Third Floor')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
     );
   }
 }
