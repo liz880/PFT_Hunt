@@ -128,16 +128,16 @@ class KristenPage extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 53, 106, 67),
         title: Text("Kristen's Page")),
-        body: Center(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ElevatedButton(onPressed: () { }, 
-          child: Text("PFT Scavenger Hunt"))
-        ],
-
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                'assets/driving_sim.jpeg',
+                fit: BoxFit.cover,
+              )
+            )
+          ],
         ),
-          ),
-        );
+    );
   }
 }
