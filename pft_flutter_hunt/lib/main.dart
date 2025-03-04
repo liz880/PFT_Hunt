@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       MaterialPageRoute(builder: (context) => const CassMPage()),
     );
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          
+
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -124,19 +124,38 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-                  ElevatedButton(onPressed: () { 
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ThirdFloor())); },
-                  child: Text('Third Floor')),
-              ElevatedButton(onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CassMPage()),
-              );
-            },
-             child: const Text('Cassidy M.')), 
-        
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ThirdFloor()));
+                },
+                child: Text('First Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ThirdFloor()));
+                },
+                child: Text('Second Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ThirdFloor()));
+                },
+                child: Text('Third Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CassMPage()),
+                  );
+                },
+                child: const Text('Cassidy M.')),
           ],
         ),
       ),
@@ -148,9 +167,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-class ThirdFloor extends StatelessWidget{
 
- const ThirdFloor({super.key});
+class ThirdFloor extends StatelessWidget {
+  const ThirdFloor({super.key});
 
   @override
   Widget build(BuildContext context) {
