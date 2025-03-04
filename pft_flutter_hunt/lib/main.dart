@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pft_flutter_hunt/cassidy_m.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,7 +7,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  // Link to Cassidy M.'s section
+  Future<void> cassmNav(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      // Create the SelectionScreen in the next step.
+      MaterialPageRoute(builder: (context) => const CassMPage()),
+    );
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -112,6 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+                     ElevatedButton(onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CassMPage()),
+              );
+            },
+             child: const Text('Cassidy M.')), 
+        
           ],
         ),
       ),
