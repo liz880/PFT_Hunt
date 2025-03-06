@@ -20,7 +20,7 @@ class CassMPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Cassidy M')),
       body: Center(
         child: ElevatedButton(
-          child: const Text('Open route'),
+          child: const Text('Back to Home'),
           onPressed: () {
             // Navigate to second route when tapped.
             homeScreen(context);
