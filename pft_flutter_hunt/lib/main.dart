@@ -132,22 +132,36 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => const FirstFloor()));
                 },
                 child: Text('First Floor')),
+            const Divider(), // Divider between buttons
             ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SecondFloor()));
-                },
-                child: Text('Second Floor')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondFloor()),
+                );
+              },
+              child: const Text('Second Floor'),
+            ),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ThirdFloor()));
-                },
-                child: Text('Third Floor')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DerekPage()),
+                );
+              },
+              child: const Text('Derek Vuong'),
+            ),
+            const Divider(), // Divider between buttons
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdFloor()),
+                );
+              },
+              child: const Text('Third Floor'),
+            ),
+            const Divider(), // Divider between buttons
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -213,6 +227,25 @@ class ThirdFloor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Third Floor PFT')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class DerekPage extends StatelessWidget {
+  const DerekPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Second Floor')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
