@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pft_flutter_hunt/cassidy_m.dart';
+import 'package:pft_flutter_hunt/derrick_v.dart';
+import 'package:pft_flutter_hunt/kyla_a.dart';
+import 'package:pft_flutter_hunt/kendrick_m.dart';
+import 'package:pft_flutter_hunt/kristen_a.dart';
+import 'package:pft_flutter_hunt/gabrielle_k.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,15 +55,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -66,18 +62,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
  @override
   Widget build(BuildContext context) {
@@ -129,32 +113,28 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FirstFloor()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => const FirstFloor()));
                 },
                 child: Text('First Floor')),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SecondFloor()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => const SecondFloor()));
                 },
                 child: Text('Second Floor')),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ThirdFloor()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => const ThirdFloor()));
                 },
                 child: Text('Third Floor')),
             ElevatedButton(
@@ -201,9 +181,14 @@ class _KristenPageState extends State<KristenPage> {
       );
     }
   }
-
-
-class FirstFloor extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+/*class FirstFloor extends StatelessWidget {
   const FirstFloor({super.key});
 
   @override
@@ -294,4 +279,4 @@ class ThirdFloor extends StatelessWidget {
     );
   }
 }
-
+*/
