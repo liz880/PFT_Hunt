@@ -213,13 +213,19 @@ class ThirdFloor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Third Floor PFT')),
-      body: Center(
-        child: ElevatedButton(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/pft-3rd-floor.jpg', width: 400, height: 400),
+          const SizedBox(height: 20),
+       ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: const Text('Go Back!'),
-        ),
+        ),  
+        ],
+      
       ),
     );
   }
