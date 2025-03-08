@@ -244,6 +244,9 @@ class DerekPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController answerController = TextEditingController();
+    const String correctAnswer = 'Waplowski';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Second Floor'),
@@ -264,6 +267,7 @@ class DerekPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: TextField(
+              controller: answerController,
               decoration: InputDecoration(
                 labelText: 'Enter text here',
                 border: OutlineInputBorder(),
@@ -284,6 +288,47 @@ class DerekPage extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
             ),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              if (answerController.text.trim().toLowerCase() ==
+                  correctAnswer.toLowerCase()) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Correct!'),
+                    content: const Text(
+                        'You entered the correct last name of the robot.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Incorrect!'),
+                    content: const Text('Try again!'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            },
+            child: const Text('Check Answer'),
           ),
         ],
       ),
