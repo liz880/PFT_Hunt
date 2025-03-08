@@ -132,6 +132,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => const FirstFloor()));
                 },
                 child: Text('First Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CassMPage()),
+                  );
+                },
+                child: const Text('Cassidy M.')),
             const Divider(), // Divider between buttons
             ElevatedButton(
               onPressed: () {
@@ -162,14 +170,6 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Third Floor'),
             ),
             const Divider(), // Divider between buttons
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CassMPage()),
-                  );
-                },
-                child: const Text('Cassidy M.')),
           ],
         ),
       ),
@@ -245,14 +245,47 @@ class DerekPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Second Floor')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go Back!'),
-        ),
+      appBar: AppBar(
+        title: const Text('Second Floor'),
+        backgroundColor: Colors.blue,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Back to Home'),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Enter text here',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Text(
+                'What is the last name of the robot name Mike?',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
