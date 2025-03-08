@@ -79,41 +79,50 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
+          /*mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Kyla Abshire"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => KristenPage()),
+                                          );
+                                      }, 
+                            child: Text("Kristen Averett"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Gabrielle King"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Derek Vuong"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Cassidy McDonald"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Kendrick Manchester"),
+                          ),*/
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -159,14 +168,40 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+class KristenPage extends StatefulWidget {
+  const KristenPage({super.key});
+
+  @override
+  _KristenPageState createState() => _KristenPageState();
+}
+
+class _KristenPageState extends State<KristenPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController myController = TextEditingController();
+
+   @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
+
+  void _checkInput() {
+    if (myController.text == "2215") {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            content: Text("Correct! You've entered 2215."),
+          );
+        },
+      );
+    }
+  }
+
 
 class FirstFloor extends StatelessWidget {
   const FirstFloor({super.key});
@@ -209,9 +244,44 @@ class SecondFloor extends StatelessWidget {
 class ThirdFloor extends StatelessWidget {
   const ThirdFloor({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 53, 106, 67),
+        title: const Text("Kristen's Page"),
+      ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+              controller: myController,
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Enter the room number!',
+              ),
+            ),
+          ),
+          Expanded(
+            child: Image.asset(
+              'assets/driving_sim.jpeg',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _checkInput, // Call function to check input
+        tooltip: 'Check Number',
+        child: const Icon(Icons.check),
+      ),
+    );
+  }
+}
       appBar: AppBar(title: const Text('Third Floor PFT')),
       body: Center(
         child: ElevatedButton(
@@ -224,3 +294,4 @@ class ThirdFloor extends StatelessWidget {
     );
   }
 }
+
