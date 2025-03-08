@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pft_flutter_hunt/cassidy_m.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,6 +7,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  // Link to Cassidy M.'s section
+  Future<void> cassmNav(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      // Create the SelectionScreen in the next step.
+      MaterialPageRoute(builder: (context) => const CassMPage()),
+    );
+  }
 
   // This widget is the root of your application.
   @override
@@ -31,7 +42,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'PFT Flutter Scavenger Hunt'),
+      home: const MyHomePage(title: 'PFT Flutter Treasure Hunt'),
     );
   }
 }
@@ -77,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          /*mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(onPressed: () {   
                                           //navigatiion call here
@@ -111,13 +122,56 @@ class _MyHomePageState extends State<MyHomePage> {
                                           //navigatiion call here
                                       }, 
                             child: Text("Kendrick Manchester"),
-                          ),
+                          ),*/
+
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FirstFloor()));
+                },
+                child: Text('First Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SecondFloor()));
+                },
+                child: Text('Second Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ThirdFloor()));
+                },
+                child: Text('Third Floor')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CassMPage()),
+                  );
+                },
+                child: const Text('Cassidy M.')),
           ],
         ),
       ),
     );
   }
 }
+
 class KristenPage extends StatefulWidget {
   const KristenPage({super.key});
 
@@ -148,9 +202,53 @@ class _KristenPageState extends State<KristenPage> {
     }
   }
 
+
+class FirstFloor extends StatelessWidget {
+  const FirstFloor({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('First Floor PFT')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondFloor extends StatelessWidget {
+  const SecondFloor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Second Floor PFT')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class ThirdFloor extends StatelessWidget {
+  const ThirdFloor({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 106, 67),
         title: const Text("Kristen's Page"),
@@ -184,3 +282,16 @@ class _KristenPageState extends State<KristenPage> {
     );
   }
 }
+      appBar: AppBar(title: const Text('Third Floor PFT')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back!'),
+        ),
+      ),
+    );
+  }
+}
+
