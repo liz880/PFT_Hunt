@@ -88,6 +88,42 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
+          /*mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Kyla Abshire"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => KristenPage()),
+                                          );
+                                      }, 
+                            child: Text("Kristen Averett"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Gabrielle King"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Derek Vuong"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Cassidy McDonald"),
+                          ),
+            ElevatedButton(onPressed: () {   
+                                          //navigatiion call here
+                                      }, 
+                            child: Text("Kendrick Manchester"),
+                          ),*/
+
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -235,6 +271,37 @@ class _KristenPageState extends State<KristenPage> {
   }
 }
 
+class KristenPage extends StatefulWidget {
+  const KristenPage({super.key});
+
+  @override
+  _KristenPageState createState() => _KristenPageState();
+}
+
+class _KristenPageState extends State<KristenPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController myController = TextEditingController();
+
+   @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
+
+  void _checkInput() {
+    if (myController.text == "2215") {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            content: Text("Correct! You've entered 2215."),
+          );
+        },
+      );
+    }
+  }
+
+
 class FirstFloor extends StatelessWidget {
   const FirstFloor({super.key});
 
@@ -276,9 +343,44 @@ class SecondFloor extends StatelessWidget {
 class ThirdFloor extends StatelessWidget {
   const ThirdFloor({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 53, 106, 67),
+        title: const Text("Kristen's Page"),
+      ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+              controller: myController,
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Enter the room number!',
+              ),
+            ),
+          ),
+          Expanded(
+            child: Image.asset(
+              'assets/driving_sim.jpeg',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _checkInput, // Call function to check input
+        tooltip: 'Check Number',
+        child: const Icon(Icons.check),
+      ),
+    );
+  }
+}
       appBar: AppBar(title: const Text('Third Floor PFT')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -297,3 +399,4 @@ class ThirdFloor extends StatelessWidget {
     );
   }
 }
+
