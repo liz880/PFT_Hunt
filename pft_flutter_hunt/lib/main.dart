@@ -264,6 +264,14 @@ class DerekPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
+
+          // Add Image here
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image(image: AssetImage('images/image0.jpeg')),
+          ),
+
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: TextField(
