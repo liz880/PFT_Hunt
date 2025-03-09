@@ -5,21 +5,18 @@ class DerekVPage extends StatefulWidget {
   const DerekVPage({super.key});
 
   @override
-  State<DerekVPage> createState() => _CassMPageState();
+  State<DerekVPage> createState() => _DerekVPageState();
 }
 
-class _CassMPageState extends State<DerekVPage> {
-  // Bool to determine if user has pressed the button
-  bool isPressedCFA = false;
-  bool isPressedPB = false;
-  bool isPressedCC = false;
+class _DerekVPageState extends State<DerekVPage> {
+  // TextEditingController for handling input
+  TextEditingController answerController = TextEditingController();
+  // Correct answer (case-insensitive check)
+  static const String correctAnswer = 'Panera Bread';
 
   Future<void> homeScreen(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
     final result = await Navigator.push(
       context,
-      // Create the SelectionScreen in the next step.
       MaterialPageRoute(builder: (context) => const MyApp()),
     );
   }
@@ -41,7 +38,7 @@ class _CassMPageState extends State<DerekVPage> {
           ),
           body: TabBarView(
             children: [
-              // Children for "Info" tab
+              // "Info" tab content
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -64,18 +61,15 @@ class _CassMPageState extends State<DerekVPage> {
                   ElevatedButton(
                     child: const Text('Back to Home'),
                     onPressed: () {
-                      // Navigate to second route when tapped.
                       homeScreen(context);
                     },
                   ),
                 ],
               ),
 
-              // Children for "Question" Tab
-              //const Icon(Icons.question_answer),
-
+              // "Question" tab content with fill-in-the-blank format
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     color: Colors.white70,
@@ -93,41 +87,56 @@ class _CassMPageState extends State<DerekVPage> {
                       ),
                     ),
                   ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: isPressedCFA
-                            ? Colors.redAccent
-                            : Colors.transparent),
-                    onPressed: () {
-                      setState(() {
-                        isPressedCFA = !isPressedCFA;
-                      });
-                    },
-                    child: Text('a) Chick-Fil-A'),
+                  const SizedBox(height: 20),
+                  // TextField for user to fill in the blank
+                  TextField(
+                    controller: answerController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your answer here',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: isPressedPB
-                            ? Colors.lightGreenAccent
-                            : Colors.transparent),
+                  const SizedBox(height: 20),
+                  // Button to check the answer
+                  ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        isPressedPB = !isPressedPB;
-                      });
+                      if (answerController.text.trim().toLowerCase() ==
+                          correctAnswer.toLowerCase()) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text('Correct!'),
+                            content:
+                                const Text('You entered the correct answer.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          ),
+                        );
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text('Incorrect!'),
+                            content: const Text('Try again!'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
                     },
-                    child: Text('b) Panera Bread'),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: isPressedCC
-                            ? Colors.redAccent
-                            : Colors.transparent),
-                    onPressed: () {
-                      setState(() {
-                        isPressedCC = !isPressedCC;
-                      });
-                    },
-                    child: Text("c) CC's Coffee"),
+                    child: const Text('Check Answer'),
                   ),
                 ],
               ),
