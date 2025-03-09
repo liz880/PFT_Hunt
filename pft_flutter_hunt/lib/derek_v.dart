@@ -54,7 +54,7 @@ class _DerekVPageState extends State<DerekVPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "This atrium space is aptly named “The Commons” and serves as the main gathering space for everyone in Patrick F. Taylor Hall. Students frequent this space between classes, not only because of the Panera Bread, but also because of the nearby Dow Student Leadership Incubator, which serves as a meeting and storage space for the more than 40 student organizations that are part of our college.",
+                        "In Zone 2100, along the wall there is a wall full of trophies and accolades.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
