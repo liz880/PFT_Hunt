@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pft_flutter_hunt/cassidy_m.dart';
-import 'package:pft_flutter_hunt/derrick_v.dart';
+import 'package:pft_flutter_hunt/derek_v.dart';
 import 'package:pft_flutter_hunt/kyla_a.dart';
 import 'package:pft_flutter_hunt/kendrick_m.dart';
 import 'package:pft_flutter_hunt/kristen_a.dart';
@@ -62,8 +62,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -107,44 +106,45 @@ class _MyHomePageState extends State<MyHomePage> {
                                       }, 
                             child: Text("Kendrick Manchester"),
                           ),*/
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            const Text('You have pushed the button this many times:'),
+            ElevatedButton(
+              onPressed: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const FirstFloor()));
+              },
+              child: Text('First Floor'),
             ),
             ElevatedButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const FirstFloor()));
-                },
-                child: Text('First Floor')),
+              onPressed: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const SecondFloor()));
+              },
+              child: Text('Second Floor'),
+            ),
             ElevatedButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const SecondFloor()));
-                },
-                child: Text('Second Floor')),
+              onPressed: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const ThirdFloor()));
+              },
+              child: Text('Third Floor'),
+            ),
             ElevatedButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const ThirdFloor()));
-                },
-                child: Text('Third Floor')),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CassMPage()),
-                  );
-                },
-                child: const Text('Cassidy M.')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CassMPage()),
+                );
+              },
+              child: const Text('Cassidy M.'),
+            ),
           ],
         ),
       ),
@@ -163,7 +163,7 @@ class _KristenPageState extends State<KristenPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController myController = TextEditingController();
 
-   @override
+  @override
   void dispose() {
     myController.dispose();
     super.dispose();
@@ -181,7 +181,7 @@ class _KristenPageState extends State<KristenPage> {
       );
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
