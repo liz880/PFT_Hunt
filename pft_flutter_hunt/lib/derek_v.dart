@@ -31,7 +31,7 @@ class _CassMPageState extends State<DerekVPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('PFT Commons'),
+            title: const Text('Test'),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.info)),

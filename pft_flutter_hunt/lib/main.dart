@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pft_flutter_hunt/cassidy_m.dart';
 import 'package:pft_flutter_hunt/derek_v.dart';
-import 'package:pft_flutter_hunt/kyla_a.dart';
-import 'package:pft_flutter_hunt/kendrick_m.dart';
-import 'package:pft_flutter_hunt/kristen_a.dart';
-import 'package:pft_flutter_hunt/gabrielle_k.dart';
 
 void main() {
   runApp(const MyApp());
