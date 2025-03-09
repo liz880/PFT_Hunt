@@ -145,6 +145,15 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Cassidy M.'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DerekVPage()),
+                );
+              },
+              child: const Text('Derek V.'),
+            ),
           ],
         ),
       ),
