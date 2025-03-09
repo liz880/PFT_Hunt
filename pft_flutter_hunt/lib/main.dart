@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pft_flutter_hunt/cassidy_m.dart';
 import 'package:pft_flutter_hunt/derek_v.dart';
+import 'package:pft_flutter_hunt/kendrick_m.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,44 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          /*mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(onPressed: () {   
-                                          //navigatiion call here
-                                      }, 
-                            child: Text("Kyla Abshire"),
-                          ),
-            ElevatedButton(onPressed: () {   
-                                          Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => KristenPage()),
-                                          );
-                                      }, 
-                            child: Text("Kristen Averett"),
-                          ),
-            ElevatedButton(onPressed: () {   
-                                          //navigatiion call here
-                                      }, 
-                            child: Text("Gabrielle King"),
-                          ),
-            ElevatedButton(onPressed: () {   
-                                          //navigatiion call here
-                                      }, 
-                            child: Text("Derek Vuong"),
-                          ),
-            ElevatedButton(onPressed: () {   
-                                          //navigatiion call here
-                                      }, 
-                            child: Text("Cassidy McDonald"),
-                          ),
-            ElevatedButton(onPressed: () {   
-                                          //navigatiion call here
-                                      }, 
-                            child: Text("Kendrick Manchester"),
-                          ),*/
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            const Text('choose your Guide'),
             ElevatedButton(
               onPressed: () {
                 // Navigator.push(
@@ -125,12 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => const ThirdFloor()));
+                 Navigator.push(
+                    context,
+                     MaterialPageRoute(
+                         builder: (context) => const KendrickMPage()));
+                
               },
-              child: Text('Third Floor'),
+              child: Text('Kendrick M.'),
             ),
             ElevatedButton(
               onPressed: () {
