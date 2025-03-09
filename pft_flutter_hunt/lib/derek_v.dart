@@ -12,7 +12,10 @@ class _DerekVPageState extends State<DerekVPage> {
   // TextEditingController for handling input
   TextEditingController answerController = TextEditingController();
   // Correct answer (case-insensitive check)
-  static const String correctAnswer = 'Panera Bread';
+  static const String correctAnswer = 'Waplowski';
+  // Boolean to track the answer status
+  bool isCorrect = false;
+  bool isChecked = false;
 
   Future<void> homeScreen(BuildContext context) async {
     final result = await Navigator.push(
@@ -28,7 +31,8 @@ class _DerekVPageState extends State<DerekVPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Test'),
+            backgroundColor: Colors.blue, // Set the AppBar color to blue
+            title: const Text('Second Floor Trophy Case'),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.info)),
@@ -79,7 +83,7 @@ class _DerekVPageState extends State<DerekVPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "Where can you use a Sip Club Membership to get a refreshing drink?",
+                        "What is the last name of the robot with the first name Mike?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -100,44 +104,37 @@ class _DerekVPageState extends State<DerekVPage> {
                   // Button to check the answer
                   ElevatedButton(
                     onPressed: () {
-                      if (answerController.text.trim().toLowerCase() ==
-                          correctAnswer.toLowerCase()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: const Text('Correct!'),
-                            content:
-                                const Text('You entered the correct answer.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: const Text('Incorrect!'),
-                            content: const Text('Try again!'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
+                      setState(() {
+                        // Check if the answer is correct or not
+                        isChecked = true;
+                        if (answerController.text.trim().toLowerCase() ==
+                            correctAnswer.toLowerCase()) {
+                          isCorrect = true;
+                        } else {
+                          isCorrect = false;
+                        }
+                      });
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: isChecked
+                          ? (isCorrect
+                              ? Colors.green
+                              : Colors
+                                  .red) // Green if correct, Red if incorrect
+                          : Colors.blue, // Default color before checking
+                    ),
                     child: const Text('Check Answer'),
                   ),
+                  const SizedBox(height: 20),
+                  // Show feedback for correct or incorrect answers
+                  if (isChecked)
+                    Text(
+                      isCorrect ? 'Correct!' : 'Incorrect! Try again.',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: isCorrect ? Colors.green : Colors.red,
+                      ),
+                    ),
                 ],
               ),
             ],
