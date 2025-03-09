@@ -31,19 +31,39 @@ class _CassMPageState extends State<CassMPage> {
 
     return MaterialApp(
       home: DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
+
         appBar: AppBar(
           title: const Text('PFT Commons'),
           bottom: const TabBar(
             tabs: [
+              Tab(icon: Icon(Icons.image)),
               Tab(icon: Icon(Icons.info)),
               Tab(icon: Icon(Icons.question_answer)),
             ],
           ),
         ),
-          body: TabBarView(
+
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/pft_commons.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          child: TabBarView(
+
             children: [
+
+              // Children for "Image" tab
+              Column(
+                children: [
+                  Text("This is a test."),
+                ],
+              ),
+
               // Children for "Info" tab
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -136,6 +156,7 @@ class _CassMPageState extends State<CassMPage> {
             ],
           ),
         ),
+      ),
       ),
     );
   }
