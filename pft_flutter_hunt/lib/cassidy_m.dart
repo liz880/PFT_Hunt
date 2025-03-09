@@ -38,9 +38,9 @@ class _CassMPageState extends State<CassMPage> {
           title: const Text('PFT Commons'),
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.image)),
               Tab(icon: Icon(Icons.info)),
               Tab(icon: Icon(Icons.question_answer)),
+              Tab(icon: Icon(Icons.image)),
             ],
           ),
         ),
@@ -56,14 +56,6 @@ class _CassMPageState extends State<CassMPage> {
           child: TabBarView(
 
             children: [
-
-              // Children for "Image" tab
-              Column(
-                children: [
-                  Text("This is a test."),
-                ],
-              ),
-
               // Children for "Info" tab
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -118,9 +110,9 @@ class _CassMPageState extends State<CassMPage> {
                     ),
                   ),
 
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: isPressedCFA ? Colors.redAccent : Colors.transparent),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: isPressedCFA ? Colors.redAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
                         isPressedCFA = !isPressedCFA;
@@ -129,9 +121,9 @@ class _CassMPageState extends State<CassMPage> {
                     child: Text('a) Chick-Fil-A'),
                   ),
 
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: isPressedPB ? Colors.lightGreenAccent : Colors.transparent),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: isPressedPB ? Colors.lightGreenAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
                         isPressedPB = !isPressedPB;
@@ -140,9 +132,9 @@ class _CassMPageState extends State<CassMPage> {
                     child: Text('b) Panera Bread'),
                   ),
 
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: isPressedCC ? Colors.redAccent : Colors.transparent),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: isPressedCC ? Colors.redAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
                         isPressedCC = !isPressedCC;
@@ -153,6 +145,14 @@ class _CassMPageState extends State<CassMPage> {
                   
                 ],
               ),
+
+              // Children for "Image" tab
+                  Column(
+                    children: [
+                      Text(""),
+                    ],
+                  ),
+
             ],
           ),
         ),
