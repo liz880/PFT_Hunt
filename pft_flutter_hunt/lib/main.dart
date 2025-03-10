@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => const KristenPage()),
                   );
                 },
-                child: const Text('Kristen Averett')),
+                child: const Text('VR Driving Research Lab')),
           ],
         ),
       ),
