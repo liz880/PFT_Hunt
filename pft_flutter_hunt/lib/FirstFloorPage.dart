@@ -17,10 +17,10 @@ class FirstFloorPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Navigate to Capstone Gallery page
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => CapstonePage()),
-                // );
+                Navigator.push(
+                   context,
+                   MaterialPageRoute(builder: (context) => CapstonePage()),
+                );
               },
               child: Text("Capstone Gallery"),
             ),
