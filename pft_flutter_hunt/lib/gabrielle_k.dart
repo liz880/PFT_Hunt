@@ -172,11 +172,11 @@ class DeanState extends State<DeanSuitePage> {
 
     return MaterialApp(
       home: DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
 
         appBar: AppBar(
-          title: const Text('PFT Commons'),
+          title: const Text("Dean's Suite"),
           bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.info)),
@@ -312,7 +312,7 @@ class StudentServicesState extends State<StudentServicesPage> {
       child: Scaffold(
 
         appBar: AppBar(
-          title: const Text('PFT Commons'),
+          title: const Text('Student Services Suite'),
           bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.info)),
