@@ -34,7 +34,7 @@ class _KristenPageState extends State<KristenPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 53, 106, 67),
-        title: const Text("Kristen's Page"),
+        title: const Text("VR Driving Simulator Lab"),
       ),
       body: Column(
         children: <Widget>[
