@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pft_flutter_hunt/main.dart';
 
 class KristenPage extends StatefulWidget {
   const KristenPage({super.key});
@@ -9,6 +10,13 @@ class KristenPage extends StatefulWidget {
 
 class _KristenPageState extends State<KristenPage> {
   final TextEditingController myController = TextEditingController();
+  
+Future<void> homeScreen(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MyApp()),
+    );
+  }
 
   @override
   void dispose() {
@@ -55,8 +63,17 @@ class _KristenPageState extends State<KristenPage> {
               width: double.infinity,
             ),
           ),
+            ElevatedButton(
+                    child: const Text('Back to Home'),
+                    onPressed: () {
+                      // Navigate to second route when tapped.
+                      homeScreen(context);
+                    },
+                  ),
         ],
+        
       ),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: _checkInput, // Call function to check input
         tooltip: 'Check Number',
