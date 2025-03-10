@@ -91,7 +91,7 @@ class _KendrickMPageState extends State<KendrickMPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "Where is the Department Suite of Computer Science",
+                        "Where is the Department Suite for Computer Science",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
