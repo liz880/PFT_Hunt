@@ -49,6 +49,7 @@ class _CassMPageState extends State<CassMPage> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/pft_commons.jpg"),
+              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.40), BlendMode.dstATop),
               fit: BoxFit.cover,
             ),
           ),

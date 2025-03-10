@@ -10,7 +10,7 @@ class KristenPage extends StatefulWidget {
 
 class _KristenPageState extends State<KristenPage> {
   final TextEditingController myController = TextEditingController();
-  
+
 Future<void> homeScreen(BuildContext context) async {
     final result = await Navigator.push(
       context,
@@ -44,7 +44,7 @@ Future<void> homeScreen(BuildContext context) async {
         backgroundColor: const Color.fromARGB(255, 53, 106, 67),
         title: const Text("VR Driving Simulator Lab"),
       ),
-      body: Column(
+      body: Column( mainAxisAlignment:MainAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
