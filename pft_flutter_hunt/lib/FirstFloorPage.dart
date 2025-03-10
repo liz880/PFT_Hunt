@@ -57,10 +57,10 @@ class FirstFloorPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Navigate to Roy O Martin Auditorium page
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => AuditoriumPage()),
-                // );
+                Navigator.push(
+                   context,
+                   MaterialPageRoute(builder: (context) => AuditoriumPage()),
+                 );
               },
               child: Text("Roy O Martin Auditorium"),
             ),

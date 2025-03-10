@@ -469,7 +469,6 @@ PageController _pageController = PageController();
     );
   }
 }
-
 class AuditoriumPage extends StatefulWidget {
   const AuditoriumPage({super.key});
  
@@ -479,40 +478,60 @@ class AuditoriumPage extends StatefulWidget {
 }
 class AuditoriumState extends State<AuditoriumPage> {
 
-  // Bool to determine if user has pressed the button
-  bool isPressedCFA = false;
-  bool isPressedPB = false;
-  bool isPressedCC = false;
+  bool isSelected1 = false; // Statement 1
+  bool isSelected2 = false; // Statement 2
+  bool isSelected3 = false; // Statement 3
+  bool isSelected4 = false; // Statement 4
 
-  Future<void> homeScreen(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
-    final result = await Navigator.push(
-      context,
-      // Create the SelectionScreen in the next step.
-      MaterialPageRoute(builder: (context) => const MyApp()),
+  // Correct Answers
+  List<bool> correctAnswers = [true, false, true, true];
+  bool _isSubmitted = false; // Track if the user has submitted their answer
+
+  // Method to check the answers
+  void checkAnswers() {
+    List<bool> userAnswers = [isSelected1, isSelected2, isSelected3, isSelected4];
+    bool isCorrect = true;
+
+    for (int i = 0; i < correctAnswers.length; i++) {
+      if (userAnswers[i] != correctAnswers[i]) {
+        isCorrect = false;
+        break;
+      }
+    }
+
+    setState(() {
+      _isSubmitted = true;
+    });
+
+    // Show a pop-up with the result
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(isCorrect ? "Correct!" : "Oops! Try again!"),
+          content: Text(isCorrect
+              ? "All your selections were correct!"
+              : "Please review your selections and try again."),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
-  @override  
+  @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      home: DefaultTabController(
-      length: 3,
-      child: Scaffold(
-
+      home: Scaffold(
         appBar: AppBar(
-          title: const Text('PFT Commons'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.info)),
-              Tab(icon: Icon(Icons.question_answer)),
-              Tab(icon: Icon(Icons.image)),
-            ],
-          ),
+          title: const Text('RoyOMartin Auditorium'),
         ),
-
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -520,111 +539,108 @@ class AuditoriumState extends State<AuditoriumPage> {
               fit: BoxFit.cover,
             ),
           ),
-
-          child: TabBarView(
-
+          child: Column(
             children: [
-              // Children for "Info" tab
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                   Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 330,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text(
-                        "This atrium space is aptly named “The Commons” and serves as the main gathering space for everyone in Patrick F. Taylor Hall. Students frequent this space between classes, not only because of the Panera Bread, but also because of the nearby Dow Student Leadership Incubator, which serves as a meeting and storage space for the more than 40 student organizations that are part of our college.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
+              // Question Section (First)
+              Container(
+                color: Colors.white70,
+                width: double.infinity,
+                padding: EdgeInsets.all(16.0),
+                child: Center(
+                  child: Text(
+                    "Which of the following statements are true about the RoyOMartin Auditorium? "
+                    "Select all that apply.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20),
                   ),
-                  ElevatedButton(
-                    child: const Text('Back to Home'),
-                    onPressed: () {
-                      // Navigate to second route when tapped.
-                      homeScreen(context);
-                    },
-                  ),
-                ],
+                ),
               ),
 
-
-              // Children for "Question" Tab
-              //const Icon(Icons.question_answer),
-
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                   Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 150,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text(
-                        "Where can you use a Sip Club Membership to get a refreshing drink?",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
+              // Centered Box for the Select All question
+              Center(
+                child: Container(
+                  width: 350, // Width of the box
+                  padding: EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black),
                   ),
-
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedCFA ? Colors.redAccent : Colors.white70),
-                    onPressed: () {
-                      setState(() {
-                        isPressedCFA = !isPressedCFA;
-                      });
-                    },
-                    child: Text('a) Chick-Fil-A'),
-                  ),
-
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedPB ? Colors.lightGreenAccent : Colors.white70),
-                    onPressed: () {
-                      setState(() {
-                        isPressedPB = !isPressedPB;
-                      });
-                    },
-                    child: Text('b) Panera Bread'),
-                  ),
-
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedCC ? Colors.redAccent : Colors.white70),
-                    onPressed: () {
-                      setState(() {
-                        isPressedCC = !isPressedCC;
-                      });
-                    },
-                    child: Text("c) CC's Coffee"),
-                  ),
-                  
-                ],
-              ),
-
-              // Children for "Image" tab
-                  Column(
+                  child: Column(
                     children: [
-                      Text(""),
+                      CheckboxListTile(
+                        title: Text("1. It holds up to 250 students."),
+                        value: isSelected1,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isSelected1 = value!;
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text("2. It has a stage for performances."),
+                        value: isSelected2,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isSelected2 = value!;
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text("3. It is the largest classroom space in PFT."),
+                        value: isSelected3,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isSelected3 = value!;
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text("4. It has flooded due to a safety shower at least once."),
+                        value: isSelected4,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isSelected4 = value!;
+                          });
+                        },
+                      ),
+                      // Button to check the answer
+                      ElevatedButton(
+                        onPressed: checkAnswers,
+                        child: Text("Submit"),
+                      ),
                     ],
                   ),
+                ),
+              ),
 
+              // If the user has submitted, show the information
+              if (_isSubmitted)
+                Expanded(
+                  child: Container(
+                    color: Colors.white70,
+                    padding: EdgeInsets.all(16.0),
+                    child: SingleChildScrollView(
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              "The largest classroom space in the building is the RoyOMartin Auditorium, "
+                              "which holds up to 250 students. It’s either really cold in there or really hot, "
+                              "depending on the day! Oh, and by the way, it has flooded at least once this year "
+                              "due to a safety shower – don't ask why!",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
-      ),
       ),
     );
   }
