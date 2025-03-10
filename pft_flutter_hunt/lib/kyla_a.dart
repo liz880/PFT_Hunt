@@ -59,7 +59,7 @@ class CapstoneState extends State<CapstonePage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/pft_commons.jpg"),
+                image: AssetImage("capstone.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -226,7 +226,7 @@ class ChevronState extends State<ChevronPage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/chevron_center.jpg"), // You can use a relevant image for Chevron Center
+                image: AssetImage("chevron.png"), // You can use a relevant image for Chevron Center
                 fit: BoxFit.cover,
 
               ),
@@ -401,12 +401,6 @@ PageController _pageController = PageController();
           title: const Text('Donor Wall'),
         ),
         body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/pft_commons.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
           child: Column(
             children: [
               // Info Section
@@ -437,8 +431,8 @@ PageController _pageController = PageController();
                       controller: _pageController,
                       scrollDirection: Axis.horizontal,
                       children: [
-                        Image.asset('assets/donor_wall_image_1.jpg', fit: BoxFit.cover),
-                        Image.asset('assets/donor_wall_image_2.jpg', fit: BoxFit.cover),
+                        Image.asset('gek_donor_two.png', fit: BoxFit.cover),
+                        Image.asset('gek_donor_one.png', fit: BoxFit.cover),
                       ],
                     ),
                     
@@ -542,7 +536,7 @@ class AuditoriumState extends State<AuditoriumPage> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/pft_commons.jpg"),
+              image: AssetImage("room.png"),
               fit: BoxFit.cover,
             ),
           ),
