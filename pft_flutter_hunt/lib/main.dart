@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 78, 59, 112)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'PF Treasure Hunt'),
+      home: const MyHomePage(title: '(PF)Treasure Hunt'),
     );
   }
 }
