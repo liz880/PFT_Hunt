@@ -43,8 +43,9 @@ class StudyState extends State<StudyRoomsPage> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/pft_commons.jpg"),
+              image: AssetImage("assets/gek_study.png"),
               fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.40), BlendMode.dstATop),
             ),
           ),
 
@@ -63,7 +64,7 @@ class StudyState extends State<StudyRoomsPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "This atrium space is aptly named “The Commons” and serves as the main gathering space for everyone in Patrick F. Taylor Hall. Students frequent this space between classes, not only because of the Panera Bread, but also because of the nearby Dow Student Leadership Incubator, which serves as a meeting and storage space for the more than 40 student organizations that are part of our college.",
+                        "You will often see students wandering around for a good place to hunker down and study, and those in the know will first check these study rooms tucked away in the 2100 wing of the second floor. Don't be surprised if you see all of them filled if you don't get there early enough, especially when exam season rolls around.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -91,7 +92,7 @@ class StudyState extends State<StudyRoomsPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "Where can you use a Sip Club Membership to get a refreshing drink?",
+                        "What is the week before finals called when these rooms will most likely be used?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -108,41 +109,32 @@ class StudyState extends State<StudyRoomsPage> {
                         stateA = !stateA;
                       });
                     },
-                    child: Text('a) Chick-Fil-A'),
+                    child: Text('a) Tears Week'),
                   ),
 
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: stateB ? Colors.lightGreenAccent : Colors.white70),
+                        backgroundColor: stateB ? Colors.redAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
                         stateB = !stateB;
                       });
                     },
-                    child: Text('b) Panera Bread'),
+                    child: Text('b) Hell Week'),
                   ),
 
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: stateC ? Colors.redAccent : Colors.white70),
+                        backgroundColor: stateC ? Colors.lightGreenAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
                         stateC = !stateC;
                       });
                     },
-                    child: Text("c) CC's Coffee"),
+                    child: Text("c) Dead Week"),
                   ),
-                  
                 ],
               ),
-
-              // Children for "Image" tab
-                  Column(
-                    children: [
-                      Text(""),
-                    ],
-                  ),
-
             ],
           ),
         ),
@@ -162,9 +154,8 @@ class DeanSuitePage extends StatefulWidget {
 class DeanState extends State<DeanSuitePage> {
 
   // Bool to determine if user has pressed the button
-  bool isPressedCFA = false;
-  bool isPressedPB = false;
-  bool isPressedCC = false;
+  bool stateTrue = false;
+  bool stateFalse = false;
 
   Future<void> homeScreen(BuildContext context) async {
     // Navigator.push returns a Future that completes after calling
@@ -198,7 +189,8 @@ class DeanState extends State<DeanSuitePage> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/pft_commons.jpg"),
+              image: AssetImage("assets/gek_dean.png"),
+              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.40), BlendMode.dstATop),
               fit: BoxFit.cover,
             ),
           ),
@@ -218,7 +210,7 @@ class DeanState extends State<DeanSuitePage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "This atrium space is aptly named “The Commons” and serves as the main gathering space for everyone in Patrick F. Taylor Hall. Students frequent this space between classes, not only because of the Panera Bread, but also because of the nearby Dow Student Leadership Incubator, which serves as a meeting and storage space for the more than 40 student organizations that are part of our college.",
+                        "The Dean Suite houses some of the overall administration offices within PFT, though students don't often visit for that purpose.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -236,10 +228,6 @@ class DeanState extends State<DeanSuitePage> {
                 ],
               ),
 
-
-              // Children for "Question" Tab
-              //const Icon(Icons.question_answer),
-
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -251,7 +239,7 @@ class DeanState extends State<DeanSuitePage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "Where can you use a Sip Club Membership to get a refreshing drink?",
+                        "Is this location one of the Lost and Founds within PFT?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -262,47 +250,27 @@ class DeanState extends State<DeanSuitePage> {
 
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedCFA ? Colors.redAccent : Colors.white70),
+                        backgroundColor: stateTrue ? Colors.lightGreenAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
-                        isPressedCFA = !isPressedCFA;
+                        stateTrue = !stateTrue;
                       });
                     },
-                    child: Text('a) Chick-Fil-A'),
+                    child: Text('True'),
                   ),
 
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedPB ? Colors.lightGreenAccent : Colors.white70),
+                        backgroundColor: stateFalse ? Colors.redAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
-                        isPressedPB = !isPressedPB;
+                        stateFalse = !stateFalse;
                       });
                     },
-                    child: Text('b) Panera Bread'),
+                    child: Text('False'),
                   ),
-
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedCC ? Colors.redAccent : Colors.white70),
-                    onPressed: () {
-                      setState(() {
-                        isPressedCC = !isPressedCC;
-                      });
-                    },
-                    child: Text("c) CC's Coffee"),
-                  ),
-                  
                 ],
               ),
-
-              // Children for "Image" tab
-                  Column(
-                    children: [
-                      Text(""),
-                    ],
-                  ),
-
             ],
           ),
         ),
@@ -322,9 +290,8 @@ class StudentServicesPage extends StatefulWidget {
 class StudentServicesState extends State<StudentServicesPage> {
 
   // Bool to determine if user has pressed the button
-  bool isPressedCFA = false;
-  bool isPressedPB = false;
-  bool isPressedCC = false;
+  bool stateTrue = false;
+  bool stateFalse = false;
 
   Future<void> homeScreen(BuildContext context) async {
     // Navigator.push returns a Future that completes after calling
@@ -341,7 +308,7 @@ class StudentServicesState extends State<StudentServicesPage> {
 
     return MaterialApp(
       home: DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
 
         appBar: AppBar(
@@ -358,7 +325,8 @@ class StudentServicesState extends State<StudentServicesPage> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/pft_commons.jpg"),
+              image: AssetImage("assets/gek_student.png"),
+              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.40), BlendMode.dstATop),
               fit: BoxFit.cover,
             ),
           ),
@@ -378,7 +346,7 @@ class StudentServicesState extends State<StudentServicesPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "This atrium space is aptly named “The Commons” and serves as the main gathering space for everyone in Patrick F. Taylor Hall. Students frequent this space between classes, not only because of the Panera Bread, but also because of the nearby Dow Student Leadership Incubator, which serves as a meeting and storage space for the more than 40 student organizations that are part of our college.",
+                        "The Student Services Suite houses the offices for all of the College of Engineering's Counselors, though you are more likely to meet them via a zoom meeting rather than in person.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -396,10 +364,6 @@ class StudentServicesState extends State<StudentServicesPage> {
                 ],
               ),
 
-
-              // Children for "Question" Tab
-              //const Icon(Icons.question_answer),
-
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -411,7 +375,7 @@ class StudentServicesState extends State<StudentServicesPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "Where can you use a Sip Club Membership to get a refreshing drink?",
+                        "Is this location one of the Lost and Founds within PFT?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -422,47 +386,27 @@ class StudentServicesState extends State<StudentServicesPage> {
 
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedCFA ? Colors.redAccent : Colors.white70),
+                        backgroundColor: stateTrue ? Colors.lightGreenAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
-                        isPressedCFA = !isPressedCFA;
+                        stateTrue = !stateTrue;
                       });
                     },
-                    child: Text('a) Chick-Fil-A'),
+                    child: Text('True'),
                   ),
 
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedPB ? Colors.lightGreenAccent : Colors.white70),
+                        backgroundColor: stateFalse ? Colors.redAccent : Colors.white70),
                     onPressed: () {
                       setState(() {
-                        isPressedPB = !isPressedPB;
+                        stateFalse = !stateFalse;
                       });
                     },
-                    child: Text('b) Panera Bread'),
+                    child: Text('False'),
                   ),
-
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: isPressedCC ? Colors.redAccent : Colors.white70),
-                    onPressed: () {
-                      setState(() {
-                        isPressedCC = !isPressedCC;
-                      });
-                    },
-                    child: Text("c) CC's Coffee"),
-                  ),
-                  
                 ],
               ),
-
-              // Children for "Image" tab
-                  Column(
-                    children: [
-                      Text(""),
-                    ],
-                  ),
-
             ],
           ),
         ),
