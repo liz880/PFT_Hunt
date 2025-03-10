@@ -46,11 +46,11 @@ class FirstFloorPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // Navigate to Donor Wall page
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => WallPage()),
-                // );
+                //Navigate to Donor Wall page
+                Navigator.push(
+                 context,
+                MaterialPageRoute(builder: (context) => WallPage()),
+                 );
               },
               child: Text("Donor Wall"),
             ),
