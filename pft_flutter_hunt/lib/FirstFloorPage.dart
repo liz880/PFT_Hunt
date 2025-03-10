@@ -36,11 +36,11 @@ class FirstFloorPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // Navigate to Chevron Center page
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => ChevronPage()),
-                // );
+                //Navigate to Chevron Center page
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChevronPage()),
+                 );
               },
               child: Text("Chevron Center"),
             ),
