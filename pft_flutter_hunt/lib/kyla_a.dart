@@ -531,6 +531,13 @@ class AuditoriumState extends State<AuditoriumPage> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('RoyOMartin Auditorium'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              // Navigate back to the home page
+              Navigator.pop(context);
+            },
+          ),
         ),
         body: Container(
           decoration: BoxDecoration(
