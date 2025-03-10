@@ -46,62 +46,70 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      
       body: Container(
         width: 3000,
         child: Positioned.fill(
-              child:  DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('pft.png'),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('pft.png'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              ),
             ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'PFT Scavenger Hunt',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: const Color.fromARGB(255, 43, 1, 56),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'PFT Scavenger Hunt',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 43, 1, 56),
+                  ),
                 ),
-              ),
-              SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FirstFloorPage()),
-                  );
-                },
-                child: Text('1st Floor', style: TextStyle(fontSize: 20)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SecondFloorPage()),
-                  );
-                },
-                child: Text('2nd Floor', style: TextStyle(fontSize: 20)),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ThirdFloorPage()),
-                  );
-                },
-                child: Text('3rd Floor', style: TextStyle(fontSize: 20)),
-              ),
-            ],
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstFloorPage()),
+                      );
+                    },
+                    child: Text('1st Floor', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondFloorPage()),
+                      );
+                    },
+                    child: Text('2nd Floor', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ThirdFloorPage()),
+                      );
+                    },
+                    child: Text('3rd Floor', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-            ),
-      )
+      ),
     );
   }
 }
