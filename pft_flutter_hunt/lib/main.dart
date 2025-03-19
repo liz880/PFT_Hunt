@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   'PFT Scavenger Hunt',
                   style: TextStyle(
+                    fontFamily: 'ProximaNova',
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: const Color.fromARGB(255, 43, 1, 56),
