@@ -39,14 +39,62 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  //SECTION - Nav bar
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    HomePageContent(),
+    FirstFloorPage(),
+    SecondFloorPage(),
+    ThirdFloorPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        backgroundColor: Color(0xFFF1EEDB),
+        selectedItemColor: const Color(0xFFD29F13),
+        unselectedItemColor: const Color(0xFF3C1053),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Text("1"),
+            label: "Floor One",
+          ),
+          BottomNavigationBarItem(
+            icon: Text("2"),
+            label: "Floor Two",
+          ),
+          BottomNavigationBarItem(
+            icon: Text("3"),
+            label: "Floor Three",
+          ),
+        ],
       ),
-      body: Container(
+    );
+  }
+}
+
+class HomePageContent extends StatelessWidget {
+  const HomePageContent({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Container(
         width: 3000,
         child: Positioned.fill(
           child: DecoratedBox(
@@ -69,47 +117,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FirstFloorPage()),
-                      );
-                    },
-                    child: Text('1st Floor', style: TextStyle(fontSize: 20)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondFloorPage()),
-                      );
-                    },
-                    child: Text('2nd Floor', style: TextStyle(fontSize: 20)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThirdFloorPage()),
-                      );
-                    },
-                    child: Text('3rd Floor', style: TextStyle(fontSize: 20)),
-                  ),
-                ),
               ],
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
