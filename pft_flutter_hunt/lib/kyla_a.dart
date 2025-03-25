@@ -371,6 +371,12 @@ class WallPage extends StatefulWidget {
 
 }
 class WallState extends State<WallPage> {
+   Future<void> homeScreen(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MyApp()),
+    );
+  }
 PageController _pageController = PageController();
 
   // Function to go to the next page
@@ -418,7 +424,10 @@ PageController _pageController = PageController();
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20),
                   ),
+               
+               
                 ),
+              
               ),
               
               // Image Carousel Section with PageView and Arrows
@@ -456,8 +465,15 @@ PageController _pageController = PageController();
                   ],
                 ),
               ),
+             ElevatedButton(
+              child: const Text('Back to Home'),
+              onPressed: () {
+                homeScreen(context);
+              },
+            ),
             ],
           ),
+        
         ),
       ),
     );

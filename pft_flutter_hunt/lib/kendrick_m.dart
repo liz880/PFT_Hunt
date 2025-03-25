@@ -31,7 +31,7 @@ class _KendrickMPageState extends State<KendrickMPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 196, 53, 244), // Set the AppBar color to blue
+            backgroundColor: const Color.fromARGB(255, 127, 2, 169), // Set the AppBar color to blue
             title: const Text('The Major Department Suites'),
             bottom: const TabBar(
               tabs: [
