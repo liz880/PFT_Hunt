@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pft_flutter_hunt/cassidy_m.dart';
-import 'package:pft_flutter_hunt/kris_a.dart';
-import 'package:pft_flutter_hunt/derek_v.dart';
-import 'package:pft_flutter_hunt/kendrick_m.dart';
-import 'package:pft_flutter_hunt/gabrielle_k.dart';
-import 'package:pft_flutter_hunt/kyla_a.dart';
+
 import 'package:pft_flutter_hunt/FirstFloorPage.dart';
 import 'package:pft_flutter_hunt/SecondFloorPage.dart';
 import 'package:pft_flutter_hunt/ThirdFloorPage.dart';
