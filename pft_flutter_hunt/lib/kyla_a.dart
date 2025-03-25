@@ -10,9 +10,9 @@ class CapstonePage extends StatefulWidget {
 }
 class CapstoneState extends State<CapstonePage> {
 
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   int _attempts = 0;
-  String _correctAnswer = "14";
+  final String _correctAnswer = "14";
   String _userAnswer = "";
   String _hint = "You have THREE attempts!";
 
@@ -127,8 +127,8 @@ class CapstoneState extends State<CapstonePage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Submit'),
                       onPressed: checkAnswer,
+                      child: const Text('Submit'),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -182,7 +182,7 @@ class ChevronState extends State<ChevronPage> {
   bool isPressedFalse = false;
   int _attempts = 0;
   String _hint = "";
-  String _answer = "True";
+  final String _answer = "True";
 
   // Function to handle the answer check
   void checkAnswer(bool userAnswer) {
@@ -371,7 +371,7 @@ class WallPage extends StatefulWidget {
 
 }
 class WallState extends State<WallPage> {
-PageController _pageController = PageController();
+final PageController _pageController = PageController();
 
   // Function to go to the next page
   void _nextPage() {

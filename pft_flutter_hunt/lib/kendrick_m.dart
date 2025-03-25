@@ -28,10 +28,11 @@ class _KendrickMPageState extends State<KendrickMPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
+        
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 196, 53, 244), // Set the AppBar color to blue
+            backgroundColor: const Color.fromARGB(255, 137, 9, 180), // Set the AppBar color to blue
             title: const Text('The Major Department Suites'),
             bottom: const TabBar(
               tabs: [
@@ -91,7 +92,7 @@ class _KendrickMPageState extends State<KendrickMPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "Where is the Department Suite for Computer Science",
+                        "",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,

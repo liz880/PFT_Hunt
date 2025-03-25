@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pft_flutter_hunt/kendrick_m.dart';
 
 class ThirdFloorPage extends StatelessWidget {
+  const ThirdFloorPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
