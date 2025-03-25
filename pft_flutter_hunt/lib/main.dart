@@ -45,6 +45,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  //SECTION - Nav bar
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    HomePageContent(),
+    FirstFloorPage(),
+    SecondFloorPage(),
+    ThirdFloorPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,47 +69,68 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Choose your Guide'),
-            ElevatedButton(
-              onPressed: () {
-                 Navigator.push(
-                    context,
-                     MaterialPageRoute(
-                         builder: (context) => const KendrickMPage()));
-                
-              },
-              child: Text('Kendrick M.'),
+      body: Container(
+        width: 3000,
+        child: Positioned.fill(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('pft.png'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CassMPage()),
-                );
-              },
-              child: const Text('Cassidy M.'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'PFT Scavenger Hunt',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 43, 1, 56),
+                  ),
+                ),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstFloorPage()),
+                      );
+                    },
+                    child: Text('1st Floor', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondFloorPage()),
+                      );
+                    },
+                    child: Text('2nd Floor', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ThirdFloorPage()),
+                      );
+                    },
+                    child: Text('3rd Floor', style: TextStyle(fontSize: 20)),
+                  ),
+                ),
+              ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const DerekVPage()),
-                  );
-                },
-                child: const Text('Derek V.')),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const KristenPage()),
-                  );
-                },
-                child: const Text('Kristen Averett')),
-          ],
+          ),
         ),
       ),
     );
