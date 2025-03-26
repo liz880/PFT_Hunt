@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Container(
+      body: SizedBox(
         width: 3000,
         child: Positioned.fill(
           child: DecoratedBox(
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 SizedBox(height: 30),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  padding: const EdgeInsets.only(bottom: 16.0), 
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  padding: const EdgeInsets.only(bottom: 16.0), 
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
+                  padding: const EdgeInsets.only(bottom: 16.0), 
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
