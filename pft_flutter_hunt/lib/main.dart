@@ -104,6 +104,7 @@ class HomePageContent extends StatelessWidget {
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
               ),
+              
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
