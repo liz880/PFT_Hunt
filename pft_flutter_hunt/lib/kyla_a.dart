@@ -59,7 +59,7 @@ class CapstoneState extends State<CapstonePage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("capstone.png"),
+                image: AssetImage("assets/capstone.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -226,7 +226,7 @@ class ChevronState extends State<ChevronPage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("chevron.png"), // You can use a relevant image for Chevron Center
+                image: AssetImage("assets/chevron.png"), // You can use a relevant image for Chevron Center
                 fit: BoxFit.cover,
 
               ),
@@ -440,8 +440,8 @@ PageController _pageController = PageController();
                       controller: _pageController,
                       scrollDirection: Axis.horizontal,
                       children: [
-                        Image.asset('gek_donor_two.png', fit: BoxFit.cover),
-                        Image.asset('gek_donor_one.png', fit: BoxFit.cover),
+                        Image.asset('assets/gek_donor_two.png', fit: BoxFit.cover),
+                        Image.asset('assets/gek_donor_one.png', fit: BoxFit.cover),
                       ],
                     ),
                     
@@ -552,7 +552,7 @@ class AuditoriumState extends State<AuditoriumPage> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("room.png"),
+              image: AssetImage("assets/room.png"),
               fit: BoxFit.cover,
             ),
           ),
