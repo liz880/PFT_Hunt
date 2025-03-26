@@ -59,7 +59,7 @@ class CapstoneState extends State<CapstonePage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("capstone.png"),
+                image: AssetImage("assets/capstone.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -226,7 +226,7 @@ class ChevronState extends State<ChevronPage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("chevron.png"), // You can use a relevant image for Chevron Center
+                image: AssetImage("assets/chevron.png"), // You can use a relevant image for Chevron Center
                 fit: BoxFit.cover,
 
               ),
@@ -371,7 +371,13 @@ class WallPage extends StatefulWidget {
 
 }
 class WallState extends State<WallPage> {
-final PageController _pageController = PageController();
+   Future<void> homeScreen(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MyApp()),
+    );
+  }
+PageController _pageController = PageController();
 
   // Function to go to the next page
   void _nextPage() {
@@ -418,7 +424,10 @@ final PageController _pageController = PageController();
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20),
                   ),
+               
+               
                 ),
+              
               ),
               
               // Image Carousel Section with PageView and Arrows
@@ -431,8 +440,8 @@ final PageController _pageController = PageController();
                       controller: _pageController,
                       scrollDirection: Axis.horizontal,
                       children: [
-                        Image.asset('gek_donor_two.png', fit: BoxFit.cover),
-                        Image.asset('gek_donor_one.png', fit: BoxFit.cover),
+                        Image.asset('assets/gek_donor_two.png', fit: BoxFit.cover),
+                        Image.asset('assets/gek_donor_one.png', fit: BoxFit.cover),
                       ],
                     ),
                     
@@ -456,8 +465,15 @@ final PageController _pageController = PageController();
                   ],
                 ),
               ),
+             ElevatedButton(
+              child: const Text('Back to Home'),
+              onPressed: () {
+                homeScreen(context);
+              },
+            ),
             ],
           ),
+        
         ),
       ),
     );
@@ -536,7 +552,7 @@ class AuditoriumState extends State<AuditoriumPage> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("room.png"),
+              image: AssetImage("assets/room.png"),
               fit: BoxFit.cover,
             ),
           ),

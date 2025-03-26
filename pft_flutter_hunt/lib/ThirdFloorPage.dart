@@ -13,7 +13,7 @@ class ThirdFloorPage extends StatelessWidget {
        body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('elevator.png'), // Make sure to use the elevator image from assets
+            image: AssetImage('assets/elevator.png'), // Make sure to use the elevator image from assets
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop), // Black opacity
           ),

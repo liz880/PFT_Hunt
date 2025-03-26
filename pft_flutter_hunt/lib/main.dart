@@ -75,10 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
           child: DecoratedBox(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('pft.png'),
+                image: AssetImage('assets/pft.png'),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
               ),
+              
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

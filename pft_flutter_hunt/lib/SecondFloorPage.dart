@@ -16,7 +16,7 @@ class SecondFloorPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('elevator.png'), // Ensure to add the elevator image to the assets folder
+            image: AssetImage('assets/elevator.png'), // Ensure to add the elevator image to the assets folder
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop), // Black opacity
           ),
