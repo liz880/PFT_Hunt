@@ -4,6 +4,8 @@ import 'package:pft_flutter_hunt/kyla_a.dart';
 
 
 class FirstFloorPage extends StatelessWidget {
+  const FirstFloorPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

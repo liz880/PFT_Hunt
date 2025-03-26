@@ -5,6 +5,8 @@ import 'package:pft_flutter_hunt/gabrielle_k.dart';
 
 
 class SecondFloorPage extends StatelessWidget {
+  const SecondFloorPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
