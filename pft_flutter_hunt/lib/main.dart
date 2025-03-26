@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pft_flutter_hunt/cassidy_m.dart';
-import 'package:pft_flutter_hunt/kris_a.dart';
-import 'package:pft_flutter_hunt/derek_v.dart';
-import 'package:pft_flutter_hunt/kendrick_m.dart';
+import 'package:pft_flutter_hunt/FirstFloorPage.dart';
+import 'package:pft_flutter_hunt/SecondFloorPage.dart';
+import 'package:pft_flutter_hunt/ThirdFloorPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,27 +9,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // Link to Cassidy M.'s section
-  Future<void> cassmNav(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
-    final result = await Navigator.push(
-      context,
-      // Create the SelectionScreen in the next step.
-      MaterialPageRoute(builder: (context) => const CassMPage()),
-    );
-  }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '(PF)Treasure Hunt',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 78, 59, 112)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'PFT Flutter Treasure Hunt'),
+      home: const MyHomePage(title: '(PF)Treasure Hunt'),
     );
   }
 }
@@ -65,11 +53,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        backgroundColor: Color(0xFFF1EEDB),
+        selectedItemColor: const Color(0xFFD29F13),
+        unselectedItemColor: const Color(0xFF3C1053),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Text("1"),
+            label: "Floor One",
+          ),
+          BottomNavigationBarItem(
+            icon: Text("2"),
+            label: "Floor Two",
+          ),
+          BottomNavigationBarItem(
+            icon: Text("3"),
+            label: "Floor Three",
+          ),
+        ],
       ),
-      body: Container(
+    );
+  }
+}
+
+class HomePageContent extends StatelessWidget {
+  const HomePageContent({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Container(
         width: 3000,
         child: Positioned.fill(
           child: DecoratedBox(
@@ -79,7 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
               ),
-              
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,47 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FirstFloorPage()),
-                      );
-                    },
-                    child: Text('1st Floor', style: TextStyle(fontSize: 20)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondFloorPage()),
-                      );
-                    },
-                    child: Text('2nd Floor', style: TextStyle(fontSize: 20)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0), // Padding between buttons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThirdFloorPage()),
-                      );
-                    },
-                    child: Text('3rd Floor', style: TextStyle(fontSize: 20)),
-                  ),
-                ),
               ],
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
