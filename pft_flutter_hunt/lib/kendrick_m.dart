@@ -44,101 +44,110 @@ class _KendrickMPageState extends State<KendrickMPage> {
           body: TabBarView(
             children: [
               // "Info" tab content
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 330,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(children: <Widget>[
-                      Image.asset('pft-3rd-floor.jpg', height: 162, scale: 2.5),
-                      SizedBox(height: 20),
-                      Text(
-                        "All department (major) suites are located on the third floor of Patrick F. Taylor Hall. This is where students can seek assistance or get answers to questions related to their specific major, providing a dedicated space for academic support.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
+              SingleChildScrollView(
+                // Wrap with SingleChildScrollView for scrolling
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment
+                      .start, // Start alignment for the content
+                  children: [
+                    Container(
+                      color: Colors.white70,
+                      width: double
+                          .infinity, // Make container expand based on the screen width
+                      padding: const EdgeInsets.all(16.0),
+                      alignment: Alignment.center, // Keep the content centered
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset('pft-3rd-floor.jpg',
+                              height: 162, scale: 2.5),
+                          const SizedBox(height: 20),
+                          Text(
+                            "All department (major) suites are located on the third floor of Patrick F. Taylor Hall. This is where students can seek assistance or get answers to questions related to their specific major, providing a dedicated space for academic support.",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
                       ),
-                    ]),
-                  ),
-                  ElevatedButton(
-                    child: const Text('Back to Home'),
-                    onPressed: () {
-                      homeScreen(context);
-                    },
-                  ),
-                ],
+                    ),
+                    const SizedBox(height: 50), // Add space before the button
+                    ElevatedButton(
+                      child: const Text('Back to Home'),
+                      onPressed: () {
+                        homeScreen(context);
+                      },
+                    ),
+                    const SizedBox(height: 20), // Add space below the button
+                  ],
+                ),
               ),
 
               // "Question" tab content with fill-in-the-blank format
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 150,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text(
-                        "",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
+              SingleChildScrollView(
+                // Wrap with SingleChildScrollView for scrolling
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      color: Colors.white70,
+                      width: double
+                          .infinity, // Make container expand based on the screen width
+                      padding: const EdgeInsets.all(16.0),
+                      alignment: Alignment.center, // Keep the content centered
+                      child: Center(
+                        child: Text(
+                          "",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  // TextField for user to fill in the blank
-                  TextField(
-                    controller: answerController,
-                    decoration: const InputDecoration(
-                      labelText: 'Enter your answer here',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // Button to check the answer
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        // Check if the answer is correct or not
-                        isChecked = true;
-                        if (answerController.text.trim().toLowerCase() ==
-                            correctAnswer.toLowerCase()) {
-                          isCorrect = true;
-                        } else {
-                          isCorrect = false;
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: isChecked
-                          ? (isCorrect
-                              ? Colors.green
-                              : Colors
-                                  .red) // Green if correct, Red if incorrect
-                          : Colors.blue, // Default color before checking
-                    ),
-                    child: const Text('Check Answer'),
-                  ),
-                  const SizedBox(height: 20),
-                  // Show feedback for correct or incorrect answers
-                  if (isChecked)
-                    Text(
-                      isCorrect ? 'Correct!' : 'Incorrect! Try again.',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: isCorrect ? Colors.green : Colors.red,
+                    const SizedBox(height: 20),
+                    // TextField for user to fill in the blank
+                    TextField(
+                      controller: answerController,
+                      decoration: const InputDecoration(
+                        labelText: 'Enter your answer here',
+                        border: OutlineInputBorder(),
                       ),
                     ),
-                ],
+                    const SizedBox(height: 20),
+                    // Button to check the answer
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          // Check if the answer is correct or not
+                          isChecked = true;
+                          if (answerController.text.trim().toLowerCase() ==
+                              correctAnswer.toLowerCase()) {
+                            isCorrect = true;
+                          } else {
+                            isCorrect = false;
+                          }
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isChecked
+                            ? (isCorrect ? Colors.green : Colors.red)
+                            : Colors.blue, // Default color before checking
+                      ),
+                      child: const Text('Check Answer'),
+                    ),
+                    const SizedBox(height: 20),
+                    // Show feedback for correct or incorrect answers
+                    if (isChecked)
+                      Text(
+                        isCorrect ? 'Correct!' : 'Incorrect! Try again.',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: isCorrect ? Colors.green : Colors.red,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ],
           ),
