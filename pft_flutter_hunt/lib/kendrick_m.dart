@@ -28,11 +28,11 @@ class _KendrickMPageState extends State<KendrickMPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 137, 9, 180), // Set the AppBar color to blue
+            backgroundColor: const Color.fromARGB(
+                255, 137, 9, 180), // Set the AppBar color to blue
             title: const Text('The Major Department Suites'),
             bottom: const TabBar(
               tabs: [
@@ -53,23 +53,17 @@ class _KendrickMPageState extends State<KendrickMPage> {
                     height: 330,
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      children: <Widget>[
-                      Image.asset('pft-3rd-floor.jpg', 
-                      height: 162, 
-                      scale: 2.5
-                      ),
+                    child: Column(children: <Widget>[
+                      Image.asset('pft-3rd-floor.jpg', height: 162, scale: 2.5),
                       SizedBox(height: 20),
-
-                     Text(
-                     "All department (major) suites are located on the third floor of PFT. This is where students go for questions or assistance related to their major.",
+                      Text(
+                        "All department (major) suites are located on the third floor of Patrick F. Taylor Hall. This is where students can seek assistance or get answers to questions related to their specific major, providing a dedicated space for academic support.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
                         ),
                       ),
-                    ]
-                    ),   
+                    ]),
                   ),
                   ElevatedButton(
                     child: const Text('Back to Home'),
