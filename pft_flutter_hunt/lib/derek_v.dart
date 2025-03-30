@@ -31,8 +31,14 @@ class _DerekVPageState extends State<DerekVPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blue, // Set the AppBar color to blue
-            title: const Text('Second Floor Trophy Case'),
+            backgroundColor:
+                const Color(0xFF3C1053), // Set the AppBar color to blue
+            title: const Text(
+              'Second Floor Trophy Case',
+              style: TextStyle(
+                color: Colors.white, // Set the title text color to white
+              ),
+            ),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.info)),
@@ -121,7 +127,8 @@ class _DerekVPageState extends State<DerekVPage> {
                               ? Colors.green
                               : Colors
                                   .red) // Green if correct, Red if incorrect
-                          : Colors.blue, // Default color before checking
+                          : const Color(
+                              0xFF3C1053), // Default color before checking
                     ),
                     child: const Text('Check Answer'),
                   ),
