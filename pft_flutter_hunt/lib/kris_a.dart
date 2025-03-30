@@ -93,13 +93,12 @@ class _KristenPageState extends State<KristenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          "VR Driving Research Lab",
-          style: TextStyle(color: Colors.black),
-        ),
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
+        backgroundColor: const Color(0xFF3C1053), 
+        title: const Text("VR Driving Research Lab",
+        style: TextStyle(color: Colors.white), 
+  ),
+  iconTheme: const IconThemeData(color: Colors.white), 
+),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
