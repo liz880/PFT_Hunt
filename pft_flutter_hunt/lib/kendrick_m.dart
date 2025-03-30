@@ -9,11 +9,8 @@ class KendrickMPage extends StatefulWidget {
 }
 
 class _KendrickMPageState extends State<KendrickMPage> {
-  // TextEditingController for handling input
   TextEditingController answerController = TextEditingController();
-  // Correct answer (case-insensitive check)
   static const String correctAnswer = '3325';
-  // Boolean to track the answer status
   bool isCorrect = false;
   bool isChecked = false;
 
@@ -27,120 +24,77 @@ class _KendrickMPageState extends State<KendrickMPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color.fromARGB(
-                255, 137, 9, 180), // Set the AppBar color to blue
-            title: const Text('The Major Department Suites'),
-            bottom: const TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.info)),
-                Tab(icon: Icon(Icons.question_answer)),
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 137, 9, 180),
+          title: const Text('The Major Department Suites'),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  color: Colors.white70,
+                  width: double.infinity,
+                  height: 150,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Text(
+                      "Where is the Computer Science Department located?",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: answerController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter your answer here',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Image.asset('pft-3rd-floor.jpg', height: 98, scale: 2.5),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      isChecked = true;
+                      if (answerController.text.trim().toLowerCase() == correctAnswer.toLowerCase()) {
+                        isCorrect = true;
+                      } else {
+                        isCorrect = false;
+                      }
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: isChecked
+                        ? (isCorrect ? Colors.green : Colors.red)
+                        : Colors.blue,
+                  ),
+                  child: const Text('Check Answer'),
+                ),
+                const SizedBox(height: 20),
+                if (isChecked)
+                  Text(
+                    isCorrect ? 'Correct!' : 'Incorrect! Try again.',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: isCorrect ? Colors.green : Colors.red,
+                    ),
+                  ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  child: const Text('Back to Home'),
+                  onPressed: () {
+                    homeScreen(context);
+                  },
+                ),
               ],
             ),
-          ),
-          body: TabBarView(
-            children: [
-              // "Info" tab content
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 330,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(children: <Widget>[
-                      Image.asset('pft-3rd-floor.jpg', height: 162, scale: 2.5),
-                      SizedBox(height: 20),
-                      Text(
-                        "All department (major) suites are located on the third floor of Patrick F. Taylor Hall. This is where students can seek assistance or get answers to questions related to their specific major, providing a dedicated space for academic support.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ]),
-                  ),
-                  ElevatedButton(
-                    child: const Text('Back to Home'),
-                    onPressed: () {
-                      homeScreen(context);
-                    },
-                  ),
-                ],
-              ),
-
-              // "Question" tab content with fill-in-the-blank format
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 150,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text(
-                        "",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // TextField for user to fill in the blank
-                  TextField(
-                    controller: answerController,
-                    decoration: const InputDecoration(
-                      labelText: 'Enter your answer here',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // Button to check the answer
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        // Check if the answer is correct or not
-                        isChecked = true;
-                        if (answerController.text.trim().toLowerCase() ==
-                            correctAnswer.toLowerCase()) {
-                          isCorrect = true;
-                        } else {
-                          isCorrect = false;
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: isChecked
-                          ? (isCorrect
-                              ? Colors.green
-                              : Colors
-                                  .red) // Green if correct, Red if incorrect
-                          : Colors.blue, // Default color before checking
-                    ),
-                    child: const Text('Check Answer'),
-                  ),
-                  const SizedBox(height: 20),
-                  // Show feedback for correct or incorrect answers
-                  if (isChecked)
-                    Text(
-                      isCorrect ? 'Correct!' : 'Incorrect! Try again.',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: isCorrect ? Colors.green : Colors.red,
-                      ),
-                    ),
-                ],
-              ),
-            ],
           ),
         ),
       ),
