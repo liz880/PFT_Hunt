@@ -12,17 +12,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-  primaryColor: const Color(0xFF3C1053),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF3C1053),
-      foregroundColor: Colors.white,
-    ),
-  ),
-),
+        primaryColor: const Color(0xFF3C1053),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF3C1053),
+            foregroundColor: Colors.white,
+          ),
+        ),
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
+  }
 }
-}
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -69,6 +71,7 @@ class KristenPage extends StatefulWidget {
 
 class _KristenPageState extends State<KristenPage> {
   final TextEditingController myController = TextEditingController();
+  String feedbackMessage = '';
 
   @override
   void dispose() {
@@ -77,85 +80,123 @@ class _KristenPageState extends State<KristenPage> {
   }
 
   void _checkInput() {
-    if (myController.text == "2215") {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            content: Text("Correct! You've entered 2215."),
-          );
-        },
-      );
-    }
+    setState(() {
+      if (myController.text.trim().toLowerCase() == "ford fusion") {
+        feedbackMessage = "Correct! The car in the VR Driving Lab is a Ford Fusion.";
+      } else {
+        feedbackMessage = "Incorrect. Try again!";
+      }
+    });
   }
 
- @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-  backgroundColor: const Color(0xFF3C1053), 
-  title: const Text("VR Driving Research Lab",
-  style: TextStyle(color: Colors.white), 
-  ),
-  iconTheme: const IconThemeData(color: Colors.white), 
-),
-    body: Stack(
-      fit: StackFit.expand, 
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/driving_sim.jpeg'), 
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.4), 
-                BlendMode.dstATop,
-              ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          "VR Driving Research Lab",
+          style: TextStyle(color: Colors.black),
+        ),
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: const AssetImage('assets/driving_sim.jpeg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.4),
+              BlendMode.dstATop,
             ),
           ),
         ),
-        Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min, 
-            children: <Widget>[
-              SizedBox(
-                width: 300, 
-                child: TextFormField(
-                  controller: myController,
-                  textAlign: TextAlign.center, 
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Enter the room number!',
-                    filled: true,
-                    fillColor: Colors.white70, 
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  color: Colors.white70,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16.0),
+                  child: const Center(
+                    child: Text(
+                      "The driving simulator lab hosts the LSU Driving Simulator, a full-sized passenger car combined with a series of cameras, projectors and screens to provide a high fidelity virtual environment that offers a high degree of driving realism. It provides a one degree of freedom motion simulation to make a driver experience similar driving efforts as in an instrumented vehicle. Its open architecture software tools allows for data collection during simulation experiments, and creation of new networks and virtually an infinite number of simulation scenarios.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20), 
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context); 
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white70, 
-                  foregroundColor: Colors.black, 
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  color: Colors.white.withOpacity(0.8),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        "What type of car is in the VR Driving Lab?",
+                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: feedbackMessage.contains("Correct")
+                                ? Colors.green
+                                : feedbackMessage.isNotEmpty
+                                    ? Colors.red
+                                    : Colors.grey,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: TextField(
+                          controller: myController,
+                          textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            labelText: 'Enter the type of car!',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                            filled: true,
+                            fillColor: Colors.white70,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _checkInput,
+                        child: const Text("Submit"),
+                      ),
+                      const SizedBox(height: 20),
+                      if (feedbackMessage.isNotEmpty)
+                        Text(
+                          feedbackMessage,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: feedbackMessage.contains("Correct") ? Colors.green : Colors.red,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                    ],
                   ),
                 ),
-                child: const Text("Back to Home"),
-              ),
-            ],
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Back"),
+                ),
+              ],
+            ),
           ),
         ),
-      ],
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: _checkInput, 
-      tooltip: 'Check Number',
-      child: const Icon(Icons.check),
-    ),
-  );
-}
+      ),
+    );
+  }
 }
