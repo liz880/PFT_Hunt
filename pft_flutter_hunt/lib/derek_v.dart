@@ -46,102 +46,117 @@ class _DerekVPageState extends State<DerekVPage> {
               ],
             ),
           ),
-          body: TabBarView(
+          body: Stack(
             children: [
-              // "Info" tab content
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 330,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text(
-                        "Spanning the second and third floors, a prominent display case along the wall highlights the achievements of engineering students, showcasing multiple accolades and innovative machines developed throughout the years. This exhibit serves as a testament to the creativity and technical expertise of the students, reflecting the high standards of the LSU College of Engineering.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
+              // Background Image with a fade effect
+              Positioned.fill(
+                child: Opacity(
+                  opacity: 0.3, // Adjust opacity for the faded effect
+                  child: Image.asset(
+                    'assets/robot.jpeg', // Provide your image path here
+                    fit: BoxFit.cover,
                   ),
-                  ElevatedButton(
-                    child: const Text('Back to Home'),
-                    onPressed: () {
-                      homeScreen(context);
-                    },
-                  ),
-                ],
+                ),
               ),
-
-              // "Question" tab content with fill-in-the-blank format
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              // Main content
+              TabBarView(
                 children: [
-                  Container(
-                    color: Colors.white70,
-                    width: 450,
-                    height: 150,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text(
-                        "What is the last name of the robot with the first name Mike?",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
+                  // "Info" tab content
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        color: Colors.white70,
+                        width: 450,
+                        height: 330,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(16.0),
+                        child: Center(
+                          child: Text(
+                            "Spanning the second and third floors, a prominent display case along the wall highlights the achievements of engineering students, showcasing multiple accolades and innovative machines developed throughout the years. This exhibit serves as a testament to the creativity and technical expertise of the students, reflecting the high standards of the LSU College of Engineering.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // TextField for user to fill in the blank
-                  TextField(
-                    controller: answerController,
-                    decoration: const InputDecoration(
-                      labelText: 'Enter your answer here',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // Button to check the answer
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        // Check if the answer is correct or not
-                        isChecked = true;
-                        if (answerController.text.trim().toLowerCase() ==
-                            correctAnswer.toLowerCase()) {
-                          isCorrect = true;
-                        } else {
-                          isCorrect = false;
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: isChecked
-                          ? (isCorrect
-                              ? Colors.green
-                              : Colors
-                                  .red) // Green if correct, Red if incorrect
-                          : const Color(
-                              0xFF3C1053), // Default color before checking
-                    ),
-                    child: const Text('Check Answer'),
-                  ),
-                  const SizedBox(height: 20),
-                  // Show feedback for correct or incorrect answers
-                  if (isChecked)
-                    Text(
-                      isCorrect ? 'Correct!' : 'Incorrect! Try again.',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: isCorrect ? Colors.green : Colors.red,
+                      ElevatedButton(
+                        child: const Text('Back to Home'),
+                        onPressed: () {
+                          homeScreen(context);
+                        },
                       ),
-                    ),
+                    ],
+                  ),
+
+                  // "Question" tab content with fill-in-the-blank format
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        color: Colors.white70,
+                        width: 450,
+                        height: 150,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(16.0),
+                        child: Center(
+                          child: Text(
+                            "What is the last name of the robot with the first name Mike?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      // TextField for user to fill in the blank
+                      TextField(
+                        controller: answerController,
+                        decoration: const InputDecoration(
+                          labelText: 'Enter your answer here',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      // Button to check the answer
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            // Check if the answer is correct or not
+                            isChecked = true;
+                            if (answerController.text.trim().toLowerCase() ==
+                                correctAnswer.toLowerCase()) {
+                              isCorrect = true;
+                            } else {
+                              isCorrect = false;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isChecked
+                              ? (isCorrect
+                                  ? Colors.green
+                                  : Colors
+                                      .red) // Green if correct, Red if incorrect
+                              : const Color(
+                                  0xFF3C1053), // Default color before checking
+                        ),
+                        child: const Text('Check Answer'),
+                      ),
+                      const SizedBox(height: 20),
+                      // Show feedback for correct or incorrect answers
+                      if (isChecked)
+                        Text(
+                          isCorrect ? 'Correct!' : 'Incorrect! Try again.',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: isCorrect ? Colors.green : Colors.red,
+                          ),
+                        ),
+                    ],
+                  ),
                 ],
               ),
             ],
