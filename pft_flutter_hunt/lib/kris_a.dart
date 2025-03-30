@@ -122,9 +122,9 @@ class _KristenPageState extends State<KristenPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: const Center(
                     child: Text(
-                      "The driving simulator lab hosts the LSU Driving Simulator, a full-sized passenger car combined with a series of cameras, projectors and screens to provide a high fidelity virtual environment that offers a high degree of driving realism. It provides a one degree of freedom motion simulation to make a driver experience similar driving efforts as in an instrumented vehicle. Its open architecture software tools allows for data collection during simulation experiments, and creation of new networks and virtually an infinite number of simulation scenarios.",
+                      "The driving simulator lab hosts the LSU Driving Simulator, a full-sized passenger car combined with a series of cameras, projectors and screens to provide a high fidelity virtual environment that offers a high degree of driving realism.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 18),
                     ),
                   ),
                 ),
@@ -137,10 +137,10 @@ class _KristenPageState extends State<KristenPage> {
                     children: [
                       const Text(
                         "What type of car is in the VR Driving Lab?",
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 18),
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(
