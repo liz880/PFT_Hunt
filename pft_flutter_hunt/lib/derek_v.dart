@@ -54,7 +54,7 @@ class _DerekVPageState extends State<DerekVPage> {
                     padding: EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "In Zone 2100, along the wall there is a wall full of trophies and accolades.",
+                        "Spanning the second and third floors, a prominent display case along the wall highlights the achievements of engineering students, showcasing multiple accolades and innovative machines developed throughout the years. This exhibit serves as a testament to the creativity and technical expertise of the students, reflecting the high standards of the LSU College of Engineering.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
