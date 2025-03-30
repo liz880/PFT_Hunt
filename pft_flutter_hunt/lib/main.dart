@@ -88,7 +88,7 @@ class HomePageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return Container(
+    return SizedBox(
         width: 3000,
         child: Positioned.fill(
           child: DecoratedBox(
@@ -99,9 +99,19 @@ class HomePageContent extends StatelessWidget {
                 colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
               ),
             ),
+           child: Center( // Centering the entire content
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+             crossAxisAlignment: CrossAxisAlignment.center,
+
               children: [
+                Image.asset(
+                    'assets/englogos.png',
+                    height: 50,  // You can adjust the size of the logo
+                  ),
+                  SizedBox(height: 10),  // Space between logo and title
                 Text(
                   'PFT Scavenger Hunt',
                   style: TextStyle(
@@ -110,11 +120,22 @@ class HomePageContent extends StatelessWidget {
                     color: const Color.fromARGB(255, 43, 1, 56),
                   ),
                 ),
-                SizedBox(height: 30),
-              ],
+               SizedBox(height: 20),  // Space between title and instructions
+                  // Instructions with normal font size
+                  Text(
+                    'Click on the floor numbers below to explore different floors of PFT. On each floor, you can click on different locations to find out more. Have fun exploring and Geaux Tigers!!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,  // Regular font size for instructions
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                     ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }

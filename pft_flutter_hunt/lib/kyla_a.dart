@@ -85,9 +85,10 @@ class CapstoneState extends State<CapstonePage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back to Home'),
+                      child: const Text('Back'),
                       onPressed: () {
-                        homeScreen(context);
+                        Navigator.pop(context);
+
                       },
                     ),
                   ],
@@ -99,8 +100,8 @@ class CapstoneState extends State<CapstonePage> {
                   children: [
                     Container(
                       color: Colors.white70,
-                      width: 450,
-                      height: 150,
+                      width:400,
+                      height: 100,
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(16.0),
                       child: Center(
@@ -253,9 +254,9 @@ class ChevronState extends State<ChevronPage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back to Home'),
+                      child: const Text('Back'),
                       onPressed: () {
-                        homeScreen(context);
+                        Navigator.pop(context);
                       },
                     ),
                   ],
@@ -365,38 +366,47 @@ class ChevronState extends State<ChevronPage> {
 }
 class WallPage extends StatefulWidget {
   const WallPage({super.key});
- 
+
   @override
   State<WallPage> createState() => WallState();
-
 }
 class WallState extends State<WallPage> {
-   Future<void> homeScreen(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
-PageController _pageController = PageController();
+  final TextEditingController _leftSideController = TextEditingController();
+  final TextEditingController _rightSideController = TextEditingController();
+  String feedbackMessage = "";
+  
+  // Flags to track if answers are correct
+  bool isLeftCorrect = false;
+  bool isRightCorrect = false;
 
-  // Function to go to the next page
-  void _nextPage() {
-    if (_pageController.page != 1) {
-      _pageController.nextPage(
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    }
-  }
+  // Correct answers
+  final String correctLeftSideAnswer = "1202";
+  final String correctRightSideAnswer = "1200";
 
-  // Function to go to the previous page
-  void _previousPage() {
-    if (_pageController.page != 0) {
-      _pageController.previousPage(
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    }
+  // Method to check the answers
+  void checkAnswers() {
+    String leftAnswer = _leftSideController.text.trim();
+    String rightAnswer = _rightSideController.text.trim();
+
+    setState(() {
+      if (leftAnswer == correctLeftSideAnswer) {
+        isLeftCorrect = true;
+      } else {
+        isLeftCorrect = false;
+      }
+
+      if (rightAnswer == correctRightSideAnswer) {
+        isRightCorrect = true;
+      } else {
+        isRightCorrect = false;
+      }
+
+      if (isLeftCorrect && isRightCorrect) {
+        feedbackMessage = "Correct! The Donor Wall is between room 1202 (Left) and room 1200 (Right).";
+      } else {
+        feedbackMessage = "Oops! Try again. Please check your answers.";
+      }
+    });
   }
 
   @override
@@ -407,73 +417,123 @@ PageController _pageController = PageController();
           title: const Text('Donor Wall'),
         ),
         body: Container(
-          child: Column(
-            children: [
-              // Info Section
-              Container(
-                color: Colors.white70,
-                width: double.infinity,
-                padding: EdgeInsets.all(16.0),
-                child: Center(
-                  child: Text(
-                    "The Donor Wall honors the generous contributions "
-                    "of our alumni and supporters who have helped shape "
-                    "the future of LSU College of Engineering. The wall "
-                    "displays the names of donors who have provided support "
-                    "to the college’s growth and development.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/gek_donor_two.png'), // Background image
+              fit: BoxFit.cover,
+              opacity: 0.5, // Optional opacity to make the text more readable
+            ),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0), // Add padding on the sides
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Info Section
+                  Container(
+                    color: Colors.white70,
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16.0),
+                    child: Center(
+                      child: Text(
+                        "The Donor Wall honors the generous contributions "
+                        "of our alumni and supporters who have helped shape "
+                        "the future of LSU College of Engineering. The wall "
+                        "displays the names of donors who have provided support "
+                        "to the college’s growth and development.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
                   ),
-               
-               
-                ),
-              
-              ),
-              
-              // Image Carousel Section with PageView and Arrows
-              Expanded(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // PageView to navigate between images
-                    PageView(
-                      controller: _pageController,
-                      scrollDirection: Axis.horizontal,
+                  
+                  SizedBox(height: 20),
+
+                  // Question Section with Two Text Fields
+                  Container(
+                    padding: EdgeInsets.all(16.0),
+                    color: Colors.white.withOpacity(0.8), // Slight transparency for readability
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min, // Ensure content doesn't take extra space
                       children: [
-                        Image.asset('assets/gek_donor_two.png', fit: BoxFit.cover),
-                        Image.asset('assets/gek_donor_one.png', fit: BoxFit.cover),
+                        Text(
+                          "What two rooms is the donor wall between?",
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 20),
+                        // Left side input box
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isLeftCorrect ? Colors.green : isLeftCorrect == false && _leftSideController.text.isNotEmpty ? Colors.red : Colors.grey, // Conditional color
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: TextField(
+                            controller: _leftSideController,
+                            decoration: InputDecoration(
+                              labelText: 'Left Side (Room Number)',
+                              border: InputBorder.none, // Remove default border
+                              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        // Right side input box
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: isRightCorrect ? Colors.green : isRightCorrect == false && _rightSideController.text.isNotEmpty ? Colors.red : Colors.grey, // Conditional color
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: TextField(
+                            controller: _rightSideController,
+                            decoration: InputDecoration(
+                              labelText: 'Right Side (Room Number)',
+                              border: InputBorder.none, // Remove default border
+                              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: checkAnswers,
+                          child: Text("Submit"),
+                        ),
+                        SizedBox(height: 20),
+                        // Feedback Message
+                        if (feedbackMessage.isNotEmpty)
+                          Text(
+                            feedbackMessage,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: feedbackMessage.contains("Correct") ? Colors.green : Colors.red,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                       ],
                     ),
-                    
-                    // Left Arrow
-                    Positioned(
-                      left: 10,
-                      child: IconButton(
-                        icon: Icon(Icons.arrow_left, size: 50, color: Colors.white),
-                        onPressed: _previousPage,
-                      ),
-                    ),
-                    
-                    // Right Arrow
-                    Positioned(
-                      right: 10,
-                      child: IconButton(
-                        icon: Icon(Icons.arrow_right, size: 50, color: Colors.white),
-                        onPressed: _nextPage,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  // Back Button
+                  ElevatedButton(
+                    child: const Text('Back'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
               ),
-             ElevatedButton(
-              child: const Text('Back to Home'),
-              onPressed: () {
-                homeScreen(context);
-              },
             ),
-            ],
           ),
-        
         ),
       ),
     );
@@ -496,6 +556,7 @@ class AuditoriumState extends State<AuditoriumPage> {
   // Correct Answers
   List<bool> correctAnswers = [true, false, true, true];
   bool _isSubmitted = false; // Track if the user has submitted their answer
+  String? resultMessage; // Message to display based on the user's answer
 
   // Method to check the answers
   void checkAnswers() {
@@ -511,28 +572,10 @@ class AuditoriumState extends State<AuditoriumPage> {
 
     setState(() {
       _isSubmitted = true;
+      resultMessage = isCorrect 
+          ? "Correct! All your selections were correct!" 
+          : "Oops! Wrong answer, please review your selections and try again.";
     });
-
-    // Show a pop-up with the result
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(isCorrect ? "Correct!" : "Oops! Try again!"),
-          content: Text(isCorrect
-              ? "All your selections were correct!"
-              : "Please review your selections and try again."),
-          actions: <Widget>[
-            TextButton(
-              child: Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 
   @override
@@ -631,7 +674,7 @@ class AuditoriumState extends State<AuditoriumPage> {
                 ),
               ),
 
-              // If the user has submitted, show the information
+              // If the user has submitted, show the information and result
               if (_isSubmitted)
                 Expanded(
                   child: Container(
@@ -641,6 +684,20 @@ class AuditoriumState extends State<AuditoriumPage> {
                       child: Center(
                         child: Column(
                           children: [
+                            // Show the result message (Correct or Wrong Answer)
+                            Text(
+                              resultMessage ?? '',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: resultMessage != null && resultMessage!.startsWith("Correct") 
+                                    ? Colors.green 
+                                    : Colors.red,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            // Additional Information
                             Text(
                               "The largest classroom space in the building is the RoyOMartin Auditorium, "
                               "which holds up to 250 students. It’s either really cold in there or really hot, "
