@@ -40,7 +40,12 @@ class CapstoneState extends State<CapstonePage> {
         length: 3, 
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Capstone Gallery'),
+            backgroundColor: const Color(0xFF3C1053),
+            title: const Text('Capstone Gallery',
+            style: TextStyle(
+              color: Color(0xFFD29F13),
+            ),
+          ),
             bottom: const TabBar(
             labelColor: Color(0xFFD29F13),
             unselectedLabelColor: Colors.white, 
@@ -421,7 +426,12 @@ class WallState extends State<WallPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Donor Wall'),
+          backgroundColor: const Color(0xFF3C1053),
+          title: const Text('Donor Wall',
+            style: TextStyle(
+              color: Color(0xFFD29F13),
+            ),
+          ),
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -603,7 +613,12 @@ class AuditoriumState extends State<AuditoriumPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('RoyOMartin Auditorium'),
+          backgroundColor: const Color(0xFF3C1053),
+          title: const Text('RoyOMartin Auditorium',
+            style: TextStyle(
+              color: Color(0xFFD29F13),
+            ),
+          ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
