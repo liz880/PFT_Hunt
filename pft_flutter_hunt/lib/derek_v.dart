@@ -9,20 +9,10 @@ class DerekVPage extends StatefulWidget {
 }
 
 class _DerekVPageState extends State<DerekVPage> {
-  // TextEditingController for handling input
   TextEditingController answerController = TextEditingController();
-  // Correct answer (case-insensitive check)
   static const String correctAnswer = 'Waplowski';
-  // Boolean to track the answer status
   bool isCorrect = false;
   bool isChecked = false;
-
-  Future<void> homeScreen(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +22,12 @@ class _DerekVPageState extends State<DerekVPage> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor:
-                const Color(0xFF3C1053), // Set the AppBar color to blue
+                const Color(0xFF3C1053),
             title: const Text(
               'Second Floor Trophy Case',
               style: TextStyle(
                 color: const Color(
-                    0xFFD29F13), // Set the title text color to white
+                    0xFFD29F13),
               ),
             ),
             bottom: const TabBar(
@@ -49,20 +39,17 @@ class _DerekVPageState extends State<DerekVPage> {
           ),
           body: Stack(
             children: [
-              // Background Image with a fade effect
               Positioned.fill(
                 child: Opacity(
-                  opacity: 0.3, // Adjust opacity for the faded effect
+                  opacity: 0.3, 
                   child: Image.asset(
-                    'assets/robot.jpeg', // Provide your image path here
+                    'assets/robot.jpeg', 
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              // Main content
               TabBarView(
                 children: [
-                  // "Info" tab content
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -85,19 +72,18 @@ class _DerekVPageState extends State<DerekVPage> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
-                              const Color(0xFF3C1053), // Purple color
+                              const Color(0xFF3C1053),
                           foregroundColor:
-                              const Color(0xFFD29F13), // Text color in #D29F13
+                              const Color(0xFFD29F13),
                         ),
-                        child: const Text('Back to Home'),
+                        child: const Text('Back'),
                         onPressed: () {
-                          homeScreen(context);
+                          Navigator.pop(context);
                         },
                       ),
                     ],
                   ),
 
-                  // "Question" tab content with fill-in-the-blank format
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -118,13 +104,12 @@ class _DerekVPageState extends State<DerekVPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // Wrapping the TextField inside a white container for background
                       Container(
                         color:
-                            Colors.white, // White background for the input box
-                        width: 300, // Set a fixed width for the input box
+                            Colors.white, 
+                        width: 300, 
                         padding: EdgeInsets.all(
-                            8.0), // Add padding for the inner content
+                            8.0), 
                         child: TextField(
                           controller: answerController,
                           decoration: const InputDecoration(
@@ -134,11 +119,9 @@ class _DerekVPageState extends State<DerekVPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // Button to check the answer
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            // Check if the answer is correct or not
                             isChecked = true;
                             if (answerController.text.trim().toLowerCase() ==
                                 correctAnswer.toLowerCase()) {
@@ -153,16 +136,15 @@ class _DerekVPageState extends State<DerekVPage> {
                               ? (isCorrect
                                   ? Colors.green
                                   : Colors
-                                      .red) // Green if correct, Red if incorrect
+                                      .red) 
                               : const Color(
-                                  0xFF3C1053), // Default purple color before checking
+                                  0xFF3C1053),
                           foregroundColor:
-                              const Color(0xFFD29F13), // Text color in #D29F13
+                              const Color(0xFFD29F13), 
                         ),
                         child: const Text('Check Answer'),
                       ),
                       const SizedBox(height: 20),
-                      // Show feedback for correct or incorrect answers
                       if (isChecked)
                         Text(
                           isCorrect ? 'Correct!' : 'Incorrect! Try again.',

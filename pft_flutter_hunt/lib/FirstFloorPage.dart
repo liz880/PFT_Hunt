@@ -10,12 +10,15 @@ class FirstFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('1st Floor'),
+        backgroundColor: const Color(0xFF3C1053),
+        title: Text('1st Floor', style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),)),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/elevator.png'), // Make sure to add your elevator image to the assets folder
+            image: AssetImage('assets/elevator.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
           ),
