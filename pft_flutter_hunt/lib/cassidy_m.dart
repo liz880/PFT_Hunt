@@ -30,6 +30,8 @@ class _CassMPageState extends State<CassMPage> {
                 color: const Color(
                     0xFFD29F13),),),
           bottom: const TabBar(
+            labelColor: Color(0xFFD29F13),
+            unselectedLabelColor: Colors.white, 
             tabs: [
               Tab(icon: Icon(Icons.info)),
               Tab(icon: Icon(Icons.question_answer)),

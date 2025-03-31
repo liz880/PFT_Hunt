@@ -27,6 +27,8 @@ class StudyState extends State<StudyRoomsPage> {
             ),
           ),
           bottom: const TabBar(
+            labelColor: Color(0xFFD29F13),
+            unselectedLabelColor: Colors.white, 
             tabs: [
               Tab(icon: Icon(Icons.info)),
               Tab(icon: Icon(Icons.question_answer)),
@@ -165,10 +167,11 @@ class DeanState extends State<DeanSuitePage> {
                 color: const Color(
                     0xFFD29F13),),),
             bottom: const TabBar(
+            labelColor: Color(0xFFD29F13),
+            unselectedLabelColor: Colors.white, 
               tabs: [
                 Tab(icon: Icon(Icons.info)),
                 Tab(icon: Icon(Icons.question_answer)),
-                Tab(icon: Icon(Icons.image)),
               ],
             ),
           ),
@@ -294,10 +297,11 @@ class StudentServicesState extends State<StudentServicesPage> {
           ),
         ),
         bottom: const TabBar(
+            labelColor: Color(0xFFD29F13),
+            unselectedLabelColor: Colors.white, 
           tabs: [
             Tab(icon: Icon(Icons.info)),
             Tab(icon: Icon(Icons.question_answer)),
-            Tab(icon: Icon(Icons.image)),
           ],
         ),
       ),
@@ -314,7 +318,6 @@ class StudentServicesState extends State<StudentServicesPage> {
         ),
         child: TabBarView(
           children: [
-            // Info Tab content
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

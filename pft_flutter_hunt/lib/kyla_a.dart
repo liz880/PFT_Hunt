@@ -37,15 +37,17 @@ class CapstoneState extends State<CapstonePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 3, // Updated tab count to 4 for the new Capstone Stairs tab
+        length: 3, 
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Capstone Gallery'),
             bottom: const TabBar(
+            labelColor: Color(0xFFD29F13),
+            unselectedLabelColor: Colors.white, 
               tabs: [
                 Tab(icon: Icon(Icons.info)),
                 Tab(icon: Icon(Icons.question_answer)),
-                Tab(icon: Icon(Icons.star)), // Added tab for Capstone Stairs
+                Tab(icon: Icon(Icons.star)), 
               ],
             ),
           ),
@@ -203,11 +205,20 @@ class ChevronState extends State<ChevronPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 4, // Updated tab count to 4 for the Chevron Center tab
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Chevron Center'),
+            backgroundColor:
+                const Color(0xFF3C1053),
+            title: const Text('Chevron Center',
+              style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),
+              ),
+            ),
             bottom: const TabBar(
+            labelColor: Color(0xFFD29F13),
+            unselectedLabelColor: Colors.white, 
               tabs: [
                 Tab(icon: Icon(Icons.info)),
                 Tab(icon: Icon(Icons.question_answer)),
@@ -218,7 +229,7 @@ class ChevronState extends State<ChevronPage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/chevron.png"), // You can use a relevant image for Chevron Center
+                image: AssetImage("assets/chevron.png"),
                 fit: BoxFit.cover,
 
               ),
@@ -259,7 +270,6 @@ class ChevronState extends State<ChevronPage> {
                   ],
                 ),
 
-                // Question Tab (True or False)
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
