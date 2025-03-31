@@ -1,67 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: const Color(0xFF3C1053),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF3C1053),
-            foregroundColor: Colors.white,
-          ),
-        ),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const KristenPage()),
-                );
-              },
-              child: const Text("Kristen Averett"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class KristenPage extends StatefulWidget {
   const KristenPage({super.key});
 
@@ -96,7 +34,9 @@ class _KristenPageState extends State<KristenPage> {
         backgroundColor: const Color(0xFF3C1053),
         title: const Text(
           "VR Driving Research Lab",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),)
         ),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -181,11 +121,16 @@ class _KristenPageState extends State<KristenPage> {
                           ),
                         ),
                         const SizedBox(height: 10),
-
                         ElevatedButton(
-                          onPressed: _checkInput,
-                          child: const Text("Submit"),
+                           onPressed: _checkInput,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
                         ),
+                        child: const Text('Submit'),
+                      ),
                         const SizedBox(height: 10),
 
                         if (feedbackMessage.isNotEmpty)
@@ -203,11 +148,17 @@ class _KristenPageState extends State<KristenPage> {
                   ),
                   const SizedBox(height: 12),
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text("Back"),
-                  ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                 ],
               ),
             ),

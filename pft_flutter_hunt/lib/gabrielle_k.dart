@@ -9,17 +9,9 @@ class StudyRoomsPage extends StatefulWidget {
 }
 
 class StudyState extends State<StudyRoomsPage> {
-  // Bool to determine if user has pressed the button
   bool stateA = false;
   bool stateB = false;
   bool stateC = false;
-
-  Future<void> homeScreen(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +20,11 @@ class StudyState extends State<StudyRoomsPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Study Rooms'),
+            backgroundColor:
+                const Color(0xFF3C1053),
+            title: const Text('Study Rooms', style: TextStyle(
+                color:  Color(
+                    0xFFD29F13),),),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.info)),
@@ -68,12 +64,17 @@ class StudyState extends State<StudyRoomsPage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back to Home'),
-                      onPressed: () {
-                        // Navigate to second route when tapped.
-                        homeScreen(context);
-                      },
-                    ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                   ],
                 ),
                 Column(
@@ -148,19 +149,8 @@ class DeanSuitePage extends StatefulWidget {
 }
 
 class DeanState extends State<DeanSuitePage> {
-  // Bool to determine if user has pressed the button
   bool stateTrue = false;
   bool stateFalse = false;
-
-  Future<void> homeScreen(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
-    final result = await Navigator.push(
-      context,
-      // Create the SelectionScreen in the next step.
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +159,11 @@ class DeanState extends State<DeanSuitePage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("Dean's Suite"),
+            backgroundColor:
+                const Color(0xFF3C1053),
+            title: const Text("Dean's Suite", style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),),),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.info)),
@@ -210,12 +204,17 @@ class DeanState extends State<DeanSuitePage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back to Home'),
-                      onPressed: () {
-                        // Navigate to second route when tapped.
-                        homeScreen(context);
-                      },
-                    ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                   ],
                 ),
 
@@ -280,19 +279,9 @@ class StudentServicesPage extends StatefulWidget {
 }
 
 class StudentServicesState extends State<StudentServicesPage> {
-  // Bool to determine if user has pressed the button
+
   bool stateTrue = false;
   bool stateFalse = false;
-
-  Future<void> homeScreen(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
-    final result = await Navigator.push(
-      context,
-      // Create the SelectionScreen in the next step.
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -301,7 +290,11 @@ class StudentServicesState extends State<StudentServicesPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Student Services Suite'),
+            backgroundColor:
+                const Color(0xFF3C1053),
+            title: const Text('Student Services Suite', style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),),),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.info)),
@@ -342,12 +335,17 @@ class StudentServicesState extends State<StudentServicesPage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back to Home'),
-                      onPressed: () {
-                        // Navigate to second route when tapped.
-                        homeScreen(context);
-                      },
-                    ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                   ],
                 ),
 

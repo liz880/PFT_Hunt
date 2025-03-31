@@ -8,7 +8,10 @@ class ThirdFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('3rd Floor'),
+        backgroundColor: const Color(0xFF3C1053),
+        title: Text('3rd Floor', style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),)),
       ),
        body: Container(
         decoration: BoxDecoration(

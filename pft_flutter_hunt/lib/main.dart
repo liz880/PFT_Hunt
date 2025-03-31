@@ -34,7 +34,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  //SECTION - Nav bar
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [

@@ -11,20 +11,9 @@ class CassMPage extends StatefulWidget {
 
 class _CassMPageState extends State<CassMPage> {
 
-  // Bool to determine if user has pressed the button
   bool isPressedCFA = false;
   bool isPressedPB = false;
   bool isPressedCC = false;
-
-  Future<void> homeScreen(BuildContext context) async {
-    // Navigator.push returns a Future that completes after calling
-    // Navigator.pop on the Selection Screen.
-    final result = await Navigator.push(
-      context,
-      // Create the SelectionScreen in the next step.
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
 
   @override  
   Widget build(BuildContext context) {
@@ -35,7 +24,11 @@ class _CassMPageState extends State<CassMPage> {
       child: Scaffold(
 
         appBar: AppBar(
-          title: const Text('PFT Commons'),
+          backgroundColor:
+                const Color(0xFF3C1053),
+          title: const Text('PFT Commons', style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),),),
           bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.info)),
@@ -57,7 +50,6 @@ class _CassMPageState extends State<CassMPage> {
           child: TabBarView(
 
             children: [
-              // Children for "Info" tab
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -78,18 +70,19 @@ class _CassMPageState extends State<CassMPage> {
                     ),
                   ),
                   ElevatedButton(
-                    child: const Text('Back to Home'),
-                    onPressed: () {
-                      // Navigate to second route when tapped.
-                      homeScreen(context);
-                    },
-                  ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                 ],
               ),
-
-
-              // Children for "Question" Tab
-              //const Icon(Icons.question_answer),
 
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

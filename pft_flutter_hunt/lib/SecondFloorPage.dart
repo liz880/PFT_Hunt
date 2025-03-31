@@ -11,7 +11,10 @@ class SecondFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('2nd Floor'),
+        backgroundColor: const Color(0xFF3C1053),
+        title: Text('2nd Floor', style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),),),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -35,7 +38,7 @@ class SecondFloorPage extends StatelessWidget {
                 },
                 child: Text("Trophies"),
               ),
-              SizedBox(height: 20), // Padding between buttons
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   // Navigate to Car Lab (KrisAPage)
