@@ -36,7 +36,8 @@ class _DerekVPageState extends State<DerekVPage> {
             title: const Text(
               'Second Floor Trophy Case',
               style: TextStyle(
-                color: Colors.white, // Set the title text color to white
+                color: const Color(
+                    0xFFD29F13), // Set the title text color to white
               ),
             ),
             bottom: const TabBar(
@@ -82,6 +83,12 @@ class _DerekVPageState extends State<DerekVPage> {
                         ),
                       ),
                       ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053), // Purple color
+                          foregroundColor:
+                              const Color(0xFFD29F13), // Text color in #D29F13
+                        ),
                         child: const Text('Back to Home'),
                         onPressed: () {
                           homeScreen(context);
@@ -148,7 +155,9 @@ class _DerekVPageState extends State<DerekVPage> {
                                   : Colors
                                       .red) // Green if correct, Red if incorrect
                               : const Color(
-                                  0xFF3C1053), // Default color before checking
+                                  0xFF3C1053), // Default purple color before checking
+                          foregroundColor:
+                              const Color(0xFFD29F13), // Text color in #D29F13
                         ),
                         child: const Text('Check Answer'),
                       ),
