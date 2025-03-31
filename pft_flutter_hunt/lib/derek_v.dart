@@ -76,7 +76,7 @@ class _DerekVPageState extends State<DerekVPage> {
                             "Spanning the second and third floors, a prominent display case along the wall highlights the achievements of engineering students, showcasing multiple accolades and innovative machines developed throughout the years. This exhibit serves as a testament to the creativity and technical expertise of the students, reflecting the high standards of the LSU College of Engineering.",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 17,
                             ),
                           ),
                         ),
@@ -111,12 +111,19 @@ class _DerekVPageState extends State<DerekVPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // TextField for user to fill in the blank
-                      TextField(
-                        controller: answerController,
-                        decoration: const InputDecoration(
-                          labelText: 'Enter your answer here',
-                          border: OutlineInputBorder(),
+                      // Wrapping the TextField inside a white container for background
+                      Container(
+                        color:
+                            Colors.white, // White background for the input box
+                        width: 300, // Set a fixed width for the input box
+                        padding: EdgeInsets.all(
+                            8.0), // Add padding for the inner content
+                        child: TextField(
+                          controller: answerController,
+                          decoration: const InputDecoration(
+                            labelText: 'Enter your answer here',
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
