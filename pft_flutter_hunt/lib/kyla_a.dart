@@ -33,13 +33,6 @@ class CapstoneState extends State<CapstonePage> {
     });
   }
 
-  Future<void> homeScreen(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -85,12 +78,17 @@ class CapstoneState extends State<CapstonePage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back'),
-                      onPressed: () {
-                        Navigator.pop(context);
-
-                      },
-                    ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                   ],
                 ),
 
@@ -201,13 +199,6 @@ class ChevronState extends State<ChevronPage> {
     });
   }
 
-  Future<void> homeScreen(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -254,11 +245,17 @@ class ChevronState extends State<ChevronPage> {
                       ),
                     ),
                     ElevatedButton(
-                      child: const Text('Back'),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                   ],
                 ),
 
@@ -503,8 +500,15 @@ class WallState extends State<WallPage> {
                         SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: checkAnswers,
-                          child: Text("Submit"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
                         ),
+                        child: const Text('Submit'),
+                        
+                      ),
                         SizedBox(height: 20),
                         // Feedback Message
                         if (feedbackMessage.isNotEmpty)
@@ -525,11 +529,17 @@ class WallState extends State<WallPage> {
 
                   // Back Button
                   ElevatedButton(
-                    child: const Text('Back'),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                 ],
               ),
             ),
@@ -664,10 +674,15 @@ class AuditoriumState extends State<AuditoriumPage> {
                           });
                         },
                       ),
-                      // Button to check the answer
                       ElevatedButton(
                         onPressed: checkAnswers,
-                        child: Text("Submit"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Submit'),
                       ),
                     ],
                   ),
@@ -706,12 +721,26 @@ class AuditoriumState extends State<AuditoriumPage> {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 20),
                             ),
+
+                            
                           ],
                         ),
                       ),
                     ),
                   ),
                 ),
+                ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
             ],
           ),
         ),

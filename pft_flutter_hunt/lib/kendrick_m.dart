@@ -14,20 +14,18 @@ class _KendrickMPageState extends State<KendrickMPage> {
   bool isCorrect = false;
   bool isChecked = false;
 
-  Future<void> homeScreen(BuildContext context) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MyApp()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 137, 9, 180),
-          title: const Text('The Major Department Suites'),
+          backgroundColor:
+                const Color(0xFF3C1053),
+          title: const Text('The Major Department Suites', style: TextStyle(
+                color: const Color(
+                    0xFFD29F13),
+              ),
+            ),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -88,11 +86,17 @@ class _KendrickMPageState extends State<KendrickMPage> {
                   ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  child: const Text('Back to Home'),
-                  onPressed: () {
-                    homeScreen(context);
-                  },
-                ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color(0xFF3C1053),
+                          foregroundColor:
+                              const Color(0xFFD29F13),
+                        ),
+                        child: const Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
               ],
             ),
           ),
