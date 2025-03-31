@@ -1,7 +1,7 @@
 # pft_flutter_hunt
 
 A new Flutter project.
-Its a Scavenger Hunt of PFT
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
